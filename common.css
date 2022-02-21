@@ -69,7 +69,7 @@ nav span {
 section {
   min-height: 100vh;
   width: 100vw;
-  left: -100vw;
+  left: -110vw;
   position: absolute;
   background: linear-gradient(white, red);
   transition-duration: 1s;
