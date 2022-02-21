@@ -1,7 +1,7 @@
 a {
   background: black;
   border-radius: 8px;
-  font-size: 3em;
+  font-size: 5em;
   color: white;
   padding: 8px;
   text-decoration: none;
@@ -70,9 +70,9 @@ section {
 }
 
 #splash h1 {
-  font-size: 3em;
+  font-size: 6em;
 }
 
 #splash ul {
-  font-size: 3em;
+  font-size: 4em;
 }
