@@ -6,6 +6,18 @@ body {
   background: red;
 }
 
+.close_button {
+  display: block;
+  width: 80vw;
+  text-align: right;
+  text-decoration: none;
+  color: rgba(128, 128, 128, 0.562);
+  font-size: 4em;
+  font-weight: bold;
+  position: fixed;
+  top: 20vh;
+}
+
 header {
   z-index: 1;
 }
