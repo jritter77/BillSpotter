@@ -23,6 +23,9 @@ body {
   justify-content: space-between;
 }
 
+button {
+}
+
 nav {
   display: flex;
   justify-content: space-between;
@@ -30,7 +33,7 @@ nav {
 }
 
 nav p {
-  font-size: xx-large;
+  font-size: 5em;
   color: white;
 }
 
