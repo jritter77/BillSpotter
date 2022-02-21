@@ -64,7 +64,7 @@ img {
 }
 
 #link_row_1 a {
-  width: 50%;
+  width: 45%;
 }
 
 #link_row_2 {
@@ -93,6 +93,14 @@ nav p {
 nav span {
   color: red;
   text-decoration: underline;
+}
+
+section {
+  min-height: 100vh;
+  min-width: 100vw;
+  left: -100vw;
+  position: absolute;
+  background: white;
 }
 
 #splash {
