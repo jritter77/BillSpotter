@@ -24,7 +24,8 @@ body {
 }
 
 button {
-  flex: 1;
+  width: 128px;
+  height: 128px;
 }
 
 img {
@@ -34,14 +35,15 @@ img {
 
 nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: center;
   background: black;
 }
 
 nav p {
-  font-size: 3em;
+  font-size: 5em;
   color: white;
-  flex: 3;
+  flex: 1;
   text-align: center;
 }
 
