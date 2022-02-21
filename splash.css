@@ -40,6 +40,10 @@ button hr {
   background-color: white;
 }
 
+header {
+  z-index: 1;
+}
+
 hr {
   width: 80%;
 }
