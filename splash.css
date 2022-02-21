@@ -101,6 +101,7 @@ section {
   left: -100vw;
   position: absolute;
   background: white;
+  transition-duration: 1s;
 }
 
 #splash {
