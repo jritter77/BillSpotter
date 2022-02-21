@@ -1,3 +1,6 @@
+const navDropdownBtn = document.getElementById("nav_btn");
+const navDropdown = document.getElementById("nav_dropdown");
+
 function getPageFromURL() {
   const loc = location.hash.substring(1);
   return loc.split("-")[0];
@@ -8,13 +11,9 @@ async function loadContent(e) {
   e?.preventDefault();
   let fragmentId = getPageFromURL();
 
-  const navDropdownBtn = document.getElementById("nav_btn");
-  const navDropdown = document.getElementById("nav_dropdown");
   const sections = document.getElementsByTagName("section");
 
-  navDropdownBtn.onclick = () => {
-    navDropdown.classList.toggle("active");
-  };
+  navDropdown.classList.remove("active");
 
   for (let sec of sections) {
     if (sec.id === fragmentId) {
@@ -24,6 +23,10 @@ async function loadContent(e) {
     }
   }
 }
+
+navDropdownBtn.onclick = () => {
+  navDropdown.classList.toggle("active");
+};
 
 // Set to home page if no hash
 if (!location.hash) {
