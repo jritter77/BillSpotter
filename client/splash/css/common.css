@@ -6,16 +6,29 @@ body {
   background: red;
 }
 
-.close_button {
-  display: block;
-  width: 80vw;
+.bubble {
+  border: 8px solid black;
+  background: white;
+  border-radius: 20px;
+  margin: 5% 5%;
+  padding: 5%;
+}
+
+.close {
   text-align: right;
-  text-decoration: none;
-  color: rgba(128, 128, 128, 0.562);
+  position: fixed;
+  top: 80vh;
+  width: 80%;
+}
+
+.close a {
   font-size: 4em;
   font-weight: bold;
-  position: fixed;
-  top: 20vh;
+  border: 24px solid rgba(128, 128, 128, 0.562);
+  border-radius: 100%;
+  text-decoration: none;
+  color: rgba(128, 128, 128, 0.562);
+  padding: 16px;
 }
 
 header {
@@ -92,14 +105,6 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-section > div {
-  border: 8px solid black;
-  background: white;
-  border-radius: 20px;
-  margin: 5% 5%;
-  padding: 5%;
 }
 
 section h1 {
