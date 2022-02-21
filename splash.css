@@ -70,6 +70,7 @@ img {
 #link_row_2 {
   display: flex;
   justify-content: space-around;
+  margin-top: 32px;
 }
 
 #link_row_2 a {
@@ -99,11 +100,6 @@ nav span {
   flex-direction: column;
   justify-content: space-around;
   align-content: center;
-  height: 80%;
-}
-
-#splash > a {
-  width: 50%;
 }
 
 #splash h1 {
