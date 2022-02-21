@@ -24,6 +24,12 @@ body {
 }
 
 button {
+  flex: 1;
+}
+
+img {
+  width: 128px;
+  height: 128px;
 }
 
 nav {
@@ -33,8 +39,10 @@ nav {
 }
 
 nav p {
-  font-size: 5em;
+  font-size: 3em;
   color: white;
+  flex: 3;
+  text-align: center;
 }
 
 nav span {
