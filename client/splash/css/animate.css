@@ -19,7 +19,7 @@
 }
 
 .active {
-  transition-duration: 1s;
+  transition-duration: 0.5s;
 }
 
 a[href="./signup.html"] {
@@ -35,6 +35,15 @@ a[href="#about"] {
 a[href="#features"] {
   animation-delay: 1.5s, 0s;
   animation-duration: 1s, 1.5s;
+}
+
+li:hover {
+  background: rgb(192, 192, 192);
+  transition: 0.5s;
+}
+
+ul.active {
+  top: 160px;
 }
 
 section.active {

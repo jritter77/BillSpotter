@@ -3,17 +3,18 @@ function getPageFromURL() {
   return loc.split("-")[0];
 }
 
-function setActive(frag) {
-  frag = document.getElementById(frag);
-  frag.classList.add("active");
-}
-
 // Populate contentDiv wtih retrieved HTML
 async function loadContent(e) {
   e?.preventDefault();
   let fragmentId = getPageFromURL();
 
+  const navDropdownBtn = document.getElementById("nav_btn");
+  const navDropdown = document.getElementById("nav_dropdown");
   const sections = document.getElementsByTagName("section");
+
+  navDropdownBtn.onclick = () => {
+    navDropdown.classList.toggle("active");
+  };
 
   for (let sec of sections) {
     if (sec.id === fragmentId) {
