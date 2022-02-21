@@ -1,0 +1,44 @@
+a {
+  background: black;
+  border-radius: 8px;
+  font-size: x-large;
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+}
+
+li {
+  font-size: large;
+  font-style: bold;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+  height: 100vh;
+  font-family: sans-serif;
+  background: linear-gradient(white, red);
+  background-repeat: no-repeat;
+  justify-content: space-between;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  background: black;
+}
+
+nav p {
+  font-size: xx-large;
+  color: white;
+}
+
+nav span {
+  color: red;
+  text-decoration: underline;
+}
+
+section {
+  flex: 1;
+}
