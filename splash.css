@@ -6,7 +6,7 @@ a {
   padding: 8px;
   text-decoration: none;
   text-align: center;
-  margin-top: 5vh;
+  margin-top: 2vh;
 }
 
 li {
@@ -54,7 +54,7 @@ img {
 }
 
 #intro {
-  margin: 10%;
+  margin: 5% 10%;
   border: 8px solid black;
   border-radius: 10px;
   background: white;
