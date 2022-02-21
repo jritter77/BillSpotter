@@ -102,7 +102,7 @@ section {
   min-width: 100vw;
   left: -100vw;
   position: absolute;
-  background: white;
+  background: linear-gradient(white, red);
   transition-duration: 1s;
 }
 
