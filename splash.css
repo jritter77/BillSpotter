@@ -17,10 +17,8 @@ body {
   display: flex;
   flex-direction: column;
   margin: 0px;
-  min-height: 100vh;
   font-family: sans-serif;
-  background: linear-gradient(white, red);
-  background-repeat: no-repeat;
+  background: red;
 }
 
 button {
@@ -109,6 +107,8 @@ section {
   flex-direction: column;
   justify-content: space-around;
   align-content: center;
+  background: linear-gradient(white, red);
+  background-repeat: no-repeat;
 }
 
 #splash h1 {
