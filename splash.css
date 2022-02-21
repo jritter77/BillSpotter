@@ -5,6 +5,8 @@ a {
   color: white;
   padding: 8px;
   text-decoration: none;
+  text-align: center;
+  margin: 10vh;
 }
 
 li {
@@ -58,6 +60,24 @@ img {
   background: white;
 }
 
+#link_row_1 {
+  display: flex;
+  justify-content: center;
+}
+
+#link_row_1 a {
+  width: 50%;
+}
+
+#link_row_2 {
+  display: flex;
+  justify-content: space-around;
+}
+
+#link_row_2 a {
+  width: 30%;
+}
+
 nav {
   display: flex;
   justify-content: space-around;
@@ -78,6 +98,17 @@ nav span {
 
 section {
   flex: 1;
+}
+
+#splash {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: center;
+}
+
+#splash > a {
+  width: 50%;
 }
 
 #splash h1 {
