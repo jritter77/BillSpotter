@@ -1,6 +1,7 @@
 li {
   font-size: 2em;
   font-weight: bold;
+  margin: 5%;
 }
 
 #intro {
@@ -44,8 +45,4 @@ li {
 #splash h1 {
   font-size: 6em;
   text-align: center;
-}
-
-#splash ul {
-  padding: 10%;
 }
