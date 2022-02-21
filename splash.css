@@ -1,7 +1,7 @@
 a {
   background: black;
   border-radius: 8px;
-  font-size: x-large;
+  font-size: 3em;
   color: white;
   padding: 8px;
   text-decoration: none;
@@ -67,4 +67,12 @@ nav span {
 
 section {
   flex: 1;
+}
+
+#splash h1 {
+  font-size: 3em;
+}
+
+#splash ul {
+  font-size: 3em;
 }
