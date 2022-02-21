@@ -36,7 +36,10 @@ button {
 }
 
 button hr {
+  border: none;
+  height: 4px;
   width: 80%;
+  background-color: white;
 }
 
 img {
