@@ -21,7 +21,6 @@ body {
   font-family: sans-serif;
   background: linear-gradient(white, red);
   background-repeat: no-repeat;
-  justify-content: space-between;
 }
 
 button {
