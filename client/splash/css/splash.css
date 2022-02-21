@@ -7,7 +7,7 @@ li {
 #intro {
   margin: 5% 10%;
   border: 8px solid black;
-  border-radius: 10px;
+  border-radius: 20px;
   background: white;
   display: flex;
   flex-direction: column;
