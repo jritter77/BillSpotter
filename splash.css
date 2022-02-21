@@ -17,7 +17,7 @@ body {
   display: flex;
   flex-direction: column;
   margin: 0px;
-  min-height: 80vh;
+  min-height: 100vh;
   font-family: sans-serif;
   background: linear-gradient(white, red);
   background-repeat: no-repeat;
@@ -93,10 +93,6 @@ nav p {
 nav span {
   color: red;
   text-decoration: underline;
-}
-
-section {
-  flex: 1;
 }
 
 #splash {
