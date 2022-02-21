@@ -81,7 +81,8 @@ section > div {
   border: 8px solid black;
   background: white;
   border-radius: 10px;
-  margin: 5% 10%;
+  margin: 5% 5%;
+  padding: 5%;
 }
 
 section h1 {
