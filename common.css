@@ -73,4 +73,5 @@ section {
   position: absolute;
   background: linear-gradient(white, red);
   transition-duration: 1s;
+  padding-top: 20vh;
 }
