@@ -99,6 +99,7 @@ nav span {
   flex-direction: column;
   justify-content: space-around;
   align-content: center;
+  height: 80%;
 }
 
 #splash > a {
