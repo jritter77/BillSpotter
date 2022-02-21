@@ -3,7 +3,7 @@ a {
   border-radius: 8px;
   font-size: 5em;
   color: white;
-  padding: 8px;
+  padding: 16px;
   text-decoration: none;
   text-align: center;
   margin-top: 2vh;
@@ -75,7 +75,7 @@ img {
 }
 
 #link_row_2 a {
-  width: 30%;
+  width: 40%;
 }
 
 nav {
