@@ -1,0 +1,53 @@
+@keyframes tempHide {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInAndBounce {
+  from {
+    opacity: 0;
+    top: 48px;
+  }
+  to {
+    opacity: 1;
+    top: 0px;
+  }
+}
+
+.active {
+  transition-duration: 1s;
+}
+
+a[href="./signup.html"] {
+  animation-delay: 0.5s, 0s;
+  animation-duration: 1s, 0.5s;
+}
+
+a[href="#about"] {
+  animation-delay: 1s, 0s;
+  animation-duration: 1s, 1s;
+}
+
+a[href="#features"] {
+  animation-delay: 1.5s, 0s;
+  animation-duration: 1s, 1.5s;
+}
+
+section.active {
+  left: 0;
+}
+
+#splash a {
+  animation-name: fadeInAndBounce, tempHide;
+  transition-duration: 1s;
+}
+
+#splash a:hover {
+  transition-duration: 1s;
+  width: 50%;
+  height: 110%;
+}
