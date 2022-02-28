@@ -8,3 +8,9 @@
 #features ul {
   font-size: 2em;
 }
+
+#features li {
+  font-size: 2em;
+  font-weight: bold;
+  margin: 5%;
+}
