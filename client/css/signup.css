@@ -16,10 +16,10 @@ form {
 
 label {
   font-weight: bold;
-  font-size: 2em;
+  font-size: 3em;
 }
 
 input {
   margin-bottom: 32px;
-  font-size: 1em;
+  font-size: 2em;
 }
