@@ -93,11 +93,12 @@ nav a {
   font-size: 5em;
   color: white;
   text-align: center;
+  text-decoration: underline;
 }
 
 nav span {
   color: red;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 nav ul {
