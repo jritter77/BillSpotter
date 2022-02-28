@@ -45,4 +45,8 @@ li {
 #splash h1 {
   font-size: 6em;
   text-align: center;
+  background: black;
+  color: white;
+  margin: 0;
+  padding: 16px;
 }

@@ -1,3 +1,6 @@
 #about h1 {
-  text-decoration: underline;
+  margin: 0;
+  background: black;
+  color: white;
+  padding: 16px;
 }
