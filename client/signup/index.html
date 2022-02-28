@@ -38,15 +38,17 @@
     <div id="signup_container">
       <div class="bubble">
         <h1>New User Registration</h1>
-        <form>
+        <form method="post">
           <label for="username">Username</label>
-          <input type="text" id="username" name="username" />
+          <input type="text" id="username" name="username" required />
 
           <label for="password">Password</label>
           <input type="password" id="password" name="password" />
 
           <label for="confirm_pass">Confirm Password</label>
           <input type="confirm_pass" id="confirm_pass" name="confirm_pass" />
+
+          <input type="submit" name="submit" id="submit" />
         </form>
       </div>
     </div>
