@@ -39,6 +39,10 @@ input[type="checkbox"] {
 
 input[type="submit"] {
   margin: 64px 20%;
+  height: 10%;
+  background: black;
+  color: white;
+  font-size: 5em;
 }
 
 input:focus {
