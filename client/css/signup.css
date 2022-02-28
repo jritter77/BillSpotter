@@ -1,7 +1,3 @@
-body {
-  height: 100vh;
-}
-
 #signup_container {
   flex: 1;
   background: linear-gradient(white 50%, red);
