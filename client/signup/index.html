@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>BillSpotter</title>
+    <meta
+      name="description"
+      content="A simple and easy to use web-app designed to make keeping track of bills a breeze!"
+    />
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/animate.css" />
+    <link rel="stylesheet" href="../css/signup.css" />
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <img src="../../images/logo.png" alt="billspotter logo" />
+        <a href="../splash/"><span>Bill</span>Spotter</a>
+        <button id="nav_btn">
+          <hr />
+          <hr />
+          <hr />
+        </button>
+        <ul id="nav_dropdown">
+          <hr />
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#features">Features</a></li>
+          <hr />
+          <li><a href="../signup/">Sign Up</a></li>
+          <li><a href="../app/index.html">Login</a></li>
+          <hr />
+          <li><a href="#">Terms</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="signup_container">
+      <div class="bubble">
+        <h1>New User Registration</h1>
+        <form>
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" />
+
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" />
+
+          <label for="confirm_pass">Confirm Password</label>
+          <input type="confirm_pass" id="confirm_pass" name="confirm_pass" />
+        </form>
+      </div>
+    </div>
+
+    <script type="module" src="./js/index.js"></script>
+  </body>
+</html>

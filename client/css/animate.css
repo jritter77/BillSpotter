@@ -22,7 +22,7 @@
   transition-duration: 0.5s;
 }
 
-a[href="./signup.html"] {
+a[href="../signup/"] {
   animation-delay: 0.5s, 0s;
   animation-duration: 1s, 0.5s;
 }
