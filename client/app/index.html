@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>BillSpotter</title>
+    <meta
+      name="description"
+      content="A simple and easy to use web-app designed to make keeping track of bills a breeze!"
+    />
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/animate.css" />
+    <link rel="stylesheet" href="../css/dashboard.css" />
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <img src="../../images/logo.png" alt="billspotter logo" />
+        <a href="#home"><span>Bill</span>Spotter</a>
+        <button id="nav_btn">
+          <hr />
+          <hr />
+          <hr />
+        </button>
+        <ul id="nav_dropdown">
+          <hr />
+          <li><a href="#home">Home</a></li>
+          <li><a href="#bills">My Bills</a></li>
+          <li><a href="#payments">My Payments</a></li>
+          <li><a href="#summary">Month Summary</a></li>
+          <hr />
+          <li><a href="../support/#faq">FAQ</a></li>
+          <li><a href="../support/">Support</a></li>
+          <hr />
+          <li><a href="../splash/">Logout</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="dashboard">
+      <h1>Dashboard</h1>
+
+      <div id="calendar_container"></div>
+
+      <a href="#bills"></a>
+      <a href="#payments"></a>
+      <a href="#summary"></a>
+    </div>
+
+    <section id="bills">
+      <h1>My Bills</h1>
+    </section>
+
+    <section id="payments">
+      <h1>Payments</h1>
+    </section>
+
+    <section id="summary">
+      <h1>Month Summary</h1>
+    </section>
+
+    <script type="module" src="./js/index.js"></script>
+  </body>
+</html>
