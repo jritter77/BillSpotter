@@ -47,7 +47,8 @@ ul.active {
 }
 
 section.active {
-  left: 0;
+  width: 100vw;
+  transition-duration: .2s;
 }
 
 #splash a {

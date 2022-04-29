@@ -1,5 +1,6 @@
 const navDropdownBtn = document.getElementById("nav_btn");
 const navDropdown = document.getElementById("nav_dropdown");
+const dropdowns = document.getElementsByClassName("dropdown");
 
 function getPageFromURL() {
   const loc = location.hash.substring(1);
@@ -22,6 +23,17 @@ async function loadContent(e) {
       sec.classList.remove("active");
     }
   }
+}
+
+for (let dd of dropdowns) {
+  dd.onclick = () => {
+    for (let el of document.getElementsByClassName("contents")) {
+      if (el !== dd.children[1]) {
+        el.classList.remove("active");
+      }
+    }
+    dd.children[1].classList.toggle("active");
+  };
 }
 
 navDropdownBtn.onclick = () => {

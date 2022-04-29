@@ -1,0 +1,39 @@
+section h1 {
+    font-size: 3em;
+    width: 100%;
+    text-decoration: underline;
+    margin-top: 100px;
+  }
+
+.dropdown {
+  background: black;
+  width: 80vw;
+  padding: 0px;
+  border: 8px solid black;
+  border-radius: 25px;
+}
+
+.dropdown h2 {
+  background: black;
+  padding: 16px;
+  color: white;
+  border-radius: 25px;
+  margin: 0px;
+  font-size: 2em;
+}
+
+.dropdown .contents {
+  background: white;
+  border-radius: 25px;
+  margin-left: 8px;
+  margin-right: 8px;
+  overflow: hidden;
+  max-height: 0;
+  padding-left: 5%;
+  transition: max-height 0.5s ease-out;
+}
+
+.dropdown .contents.active {
+  max-height: 50vh;
+  transition: max-height 0.5s ease-out;
+}
