@@ -59,36 +59,8 @@
 
     <section id="bills">
       <h1>My Bills</h1>
-
-      <div class="dropdown">
-        <h2>Rent</h2>
-        <div class="contents">
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-        </div>
-      </div>
-
-      <div class="dropdown">
-        <h2>Rent</h2>
-        <div class="contents">
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-        </div>
-      </div>
-
-      <div class="dropdown">
-        <h2>Rent</h2>
-        <div class="contents">
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-          <p>stuff</p>
-        </div>
-      </div>
+      <div id="bill_dropdowns"></div>
+      <div id="new_bill_btn"><h2>+ New Bill</h2></div>
     </section>
 
     <section id="payments">
@@ -97,6 +69,46 @@
 
     <section id="summary">
       <h1>Month Summary</h1>
+    </section>
+
+    <section id="edit_bill">
+      <h1>Edit Bill</h1>
+      <form id="edit_bill_form" class="bubble">
+        <h1>Bill Details</h1>
+        <h2>Bill Name</h2>
+        <input id="bill_name" />
+        <div class="row">
+          <div>
+            <h2>Type</h2>
+            <select id="bill_type">
+              <option value="home">Home</option>
+              <option value="auto">Auto</option>
+              <option value="medical">Medical</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div>
+            <h2>Frequency</h2>
+            <select id="bill_type">
+              <option value="monthly">Monthly</option>
+              <option value="weekly">Weekly</option>
+              <option value="annually">Annually</option>
+              <option value="bi-weekly">Bi-weekly</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <h2>Date Due</h2>
+            <input id="bill_date_due" type="date" />
+          </div>
+          <div>
+            <h2>Amount Due</h2>
+            <input id="bill_amt_due" type="number" />
+          </div>
+        </div>
+      </form>
     </section>
 
     <script type="module" src="./js/index.js"></script>

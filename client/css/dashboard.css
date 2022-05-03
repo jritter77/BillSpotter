@@ -17,9 +17,8 @@
 
 #dashboard > h1 {
   font-size: 3em;
-  width: 100%;
+  width: 80%;
   text-decoration: underline;
-  margin-left: 5%;
 }
 
 #next_due {
