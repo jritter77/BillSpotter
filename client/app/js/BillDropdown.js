@@ -62,8 +62,8 @@ const BillDropdown = ({ billName, nextDue, amtDue, status, freq, type }) => {
   </div>`);
 };
 
-const editBill = () => {
-  location.hash = "edit_bill";
+const editBill = (billName) => {
+  location.hash = "edit_bill?bill=" + billName;
 };
 
 const toggleCollapse = (dropdown) => {
@@ -82,7 +82,7 @@ const createBillDropdowns = (billArr) => {
   for (let bill of billArr) {
     let dropdown = BillDropdown(bill);
     dropdown[0].children[0].onclick = () => toggleCollapse(dropdown);
-    dropdown.find(".editBillBtn").click(editBill);
+    dropdown.find(".editBillBtn").click(() => editBill(bill.billName));
     bill_dropdowns.append(dropdown);
   }
 };

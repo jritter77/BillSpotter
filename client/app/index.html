@@ -72,7 +72,6 @@
     </section>
 
     <section id="edit_bill">
-      <h1>Edit Bill</h1>
       <form id="edit_bill_form" class="bubble">
         <h1>Bill Details</h1>
         <h2>Bill Name</h2>
@@ -109,7 +108,19 @@
           </div>
         </div>
       </form>
+      <button id="save_changes_btn">Save Changes</button>
     </section>
+
+    <div id="alert_container">
+      <div id="confirmation_alert" class="bubble">
+        <h1>Confirmation Alert</h1>
+        <p>Are you sure you would like to perform this action?</p>
+        <div>
+          <button id="alert_confirm">&#9745</button>
+          <button id="alert_dismiss">&#9746</button>
+        </div>
+      </div>
+    </div>
 
     <script type="module" src="./js/index.js"></script>
   </body>

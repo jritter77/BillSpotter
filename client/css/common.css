@@ -1,9 +1,29 @@
+
+:root {
+  --main-bg-color: rgb(35, 199, 240);
+}
+
+
+#alert_container {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.199);
+}
+
+#alert_container.active {
+  display: flex;
+}
+
 body {
   display: flex;
   flex-direction: column;
   margin: 0;
   font-family: sans-serif;
-  background: red;
+  background: var(--main-bg-color);
 }
 
 .bubble {
@@ -22,6 +42,33 @@ body {
 
 .bubble p {
   padding: 5%;
+}
+
+#confirmation_alert {
+  font-size: 2em;
+}
+
+#confirmation_alert button {
+  font-size: 5em;
+  border: none;
+  background-color: white;
+  padding: 0 5%;
+  margin: 5%;
+  border-radius: 25px;
+}
+
+#confirmation_alert button:hover {
+  background-color: black;
+  color: white;
+}
+
+#confirmation_alert p {
+  font-size: 2em;
+}
+
+#confirmation_alert div {
+  display: flex;
+  justify-content: space-around;
 }
 
 .close {
@@ -105,13 +152,15 @@ nav a {
 }
 
 nav span {
-  color: red;
+  color: var(--main-bg-color);
   text-decoration: none;
 }
 
 nav ul {
   position: absolute;
-  top: -150vh;
+  overflow: hidden;
+  top: 160px;
+  max-height: 0;
   background: white;
   list-style-type: none;
   margin: 0;
@@ -143,7 +192,7 @@ section {
   width: 0vw;
   overflow: hidden;
   position: absolute;
-  background: linear-gradient(white 50%, red);
+  background: linear-gradient(white 50%, var(--main-bg-color));
   transition-duration: 0.2s;
   padding-top: 10vh;
   border: 4px solid black;

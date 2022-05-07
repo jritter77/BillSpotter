@@ -1,46 +1,31 @@
 import { createBillDropdowns, testBills } from "./billDropdown.js";
+import { initNav } from "./navigation.js";
 
-const navDropdownBtn = document.getElementById("nav_btn");
-const navDropdown = document.getElementById("nav_dropdown");
+// Initialize navigation
 
-function getPageFromURL() {
-  const loc = location.hash.substring(1);
-  return loc.split("-")[0];
+async function getBills() {
+  sessionStorage.setItem("bills", JSON.stringify(testBills));
 }
 
-// Populate contentDiv wtih retrieved HTML
-async function loadContent(e) {
-  e?.preventDefault();
-  let fragmentId = getPageFromURL();
+getBills();
 
-  const sections = document.getElementsByTagName("section");
-
-  navDropdown.classList.remove("active");
-
-  for (let sec of sections) {
-    if (sec.id === fragmentId) {
-      sec.classList.add("active");
-    } else {
-      sec.classList.remove("active");
-    }
-  }
-}
+initNav();
 
 createBillDropdowns(testBills);
 
 $("#new_bill_btn").click(() => (location.hash = "edit_bill"));
 
-navDropdownBtn.onclick = () => {
-  navDropdown.classList.toggle("active");
-};
+$("#save_changes_btn").click(() => {
+  $("#alert_container").toggleClass("active");
+});
 
-// Set to home page if no hash
-if (!location.hash) {
-  location.hash = "#home";
-}
+$("#alert_container").click((e) => {
+  if (e.target === $("#alert_container")[0]) {
+    $("#alert_container").toggleClass("active");
+  }
+});
 
-// initial call to load content
-loadContent();
-
-// add event listener for hash
-window.addEventListener("hashchange", loadContent);
+$("#alert_confirm").click(() => console.log("confirmed"));
+$("#alert_dismiss").click(() => {
+  $("#alert_container").toggleClass("active");
+});

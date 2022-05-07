@@ -15,6 +15,7 @@ section > h1 {
 
 #edit_bill_form h2 {
   font-size: 3em;
+  text-decoration: underline;
 }
 
 #edit_bill_form input {
@@ -54,6 +55,17 @@ option {
   border-radius: 25px;
   margin: 0px;
   font-size: 3em;
+}
+
+#save_changes_btn {
+  background: black;
+  width: 80vw;
+  padding: 16px;
+  border: 8px solid black;
+  border-radius: 25px;
+  margin-top: 5%;
+  color: white;
+  font-size: 5em;
 }
 
 .dropdown {

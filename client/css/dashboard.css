@@ -4,7 +4,7 @@
 }
 
 #dashboard {
-  background: linear-gradient(white 50%, red);
+  background: linear-gradient(white 50%, var(--main-bg-color));
   flex: 1;
   display: flex;
   flex-direction: column;
