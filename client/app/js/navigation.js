@@ -8,9 +8,15 @@ async function loadContent(e) {
   e?.preventDefault();
   const navDropdown = document.getElementById("nav_dropdown");
 
-  let fragmentId = getPageFromURL();
-  fragmentId = fragmentId.match(/[A-Za-z0-9\-\_]+/)[0];
-  console.log(fragmentId);
+  let page = getPageFromURL();
+  let fragmentId = page.match(/[A-Za-z0-9\-\_]+/)[0];
+  let billName = page.match(/bill=[A-Za-z]+/);
+
+  if (billName) {
+    billName = billName[0].split("=")[1];
+  } else {
+    $("#edit_bill_form")[0].reset();
+  }
 
   const sections = document.getElementsByTagName("section");
 
@@ -22,6 +28,16 @@ async function loadContent(e) {
 
       if (sec.id === "edit_bill") {
         let bills = JSON.parse(sessionStorage.getItem("bills"));
+
+        for (let bill of bills) {
+          if (billName && bill.billName === billName) {
+            $("#bill_name").val(bill.billName);
+            $("#bill_type")[0].value = bill.type;
+            $("#bill_freq")[0].value = bill.freq;
+            $("#bill_date_due").val(bill.nextDue);
+            $("#bill_amt_due").val(bill.amtDue);
+          }
+        }
       }
     } else {
       sec.classList.remove("active");

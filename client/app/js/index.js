@@ -1,4 +1,6 @@
 import { createBillDropdowns, testBills } from "./billDropdown.js";
+import { createCalendar, setCalendarBills, setMonthDates } from "./Calendar.js";
+import { DueBill } from "./DueBill.js";
 import { initNav } from "./navigation.js";
 
 // Initialize navigation
@@ -25,7 +27,21 @@ $("#alert_container").click((e) => {
   }
 });
 
-$("#alert_confirm").click(() => console.log("confirmed"));
+$("#alert_confirm").click(() => {
+  alert("confirmed");
+  $("#alert_container").toggleClass("active");
+});
+
 $("#alert_dismiss").click(() => {
   $("#alert_container").toggleClass("active");
 });
+
+$("#calendar_container").append(createCalendar());
+setMonthDates();
+setCalendarBills(testBills);
+
+for (let bill of testBills) {
+  if (!bill.datePaid) {
+    $("#next_due_bills").append(DueBill(bill));
+  }
+}
