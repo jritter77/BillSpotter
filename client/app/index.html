@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../css/animate.css" />
     <link rel="stylesheet" href="../css/dashboard.css" />
     <link rel="stylesheet" href="../css/bills.css" />
+    <link rel="stylesheet" href="../css/payments.css" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   </head>
@@ -38,6 +39,7 @@
         </ul>
       </nav>
     </header>
+    <div id="toast">hello</div>
 
     <div id="dashboard">
       <h1>Dashboard</h1>
@@ -47,9 +49,9 @@
       </div>
 
       <div id="shortcut_links">
-        <a href="#bills">Bills</a>
-        <a href="#payments">Payments</a>
-        <a href="#summary">Summary</a>
+        <a href="#bills"><img src="../../images/bills_icon.svg" alt=""> Bills</a>
+        <a href="#payments"><img src="../../images/payments_icon.svg" alt=""> Payments</a>
+        <a href="#summary"><img src="../../images/summary_icon.svg" alt=""> Summary</a>
       </div>
 
       <div id="next_due" class="bubble">
@@ -112,6 +114,49 @@
       <button id="save_changes_btn">Save Changes</button>
     </section>
 
+    <section id="payment_details">
+
+        <form id="payment_form" class="bubble">
+          <h1>Payment&nbsp;Details</h1>
+          <div class="row">
+            <div>
+              <h2>Bill Name</h2>
+              <p id="pay_bill_name"></p>
+            </div>
+            <div>
+              <h2>Type</h2>
+              <p id="pay_type"></p>
+            </div>
+          </div>
+          <div class="row">
+            <div>
+              <h2>Date Due</h2>
+              <p id="pay_date_due"></p>
+            </div>
+            <div>
+              <h2>Amount Due</h2>
+              <p id="pay_amt_due"></p>
+            </div>
+          </div>
+          <div class="row">
+            <div>
+              <h2>Paid On</h2>
+              <label><input type="radio" id="radio_today" name="pay_date_paid" checked>Today</label>
+              <label><input type="radio" id="radio_other_date" name="pay_date_paid">Other Date:</label>
+              <input id="other_date" type="date" disabled>
+            </div>
+            <div>
+              <h2>Amount Paid</h2>
+              <label><input type="radio" id="radio_full_amt" name="pay_amt_paid" checked>Full Amount</label>
+              <label><input type="radio" id="radio_other_amt" name="pay_amt_paid">Other Amount:</label>
+              <input type="number" id="other_amt" disabled>
+            </div>
+          </div>
+          <input type="submit" id="confirm_payment_btn" value="Confirm Payment">
+        </form>
+
+    </section>
+
     <div id="alert_container">
       <div id="confirmation_alert" class="bubble">
         <h1>Confirmation Alert</h1>
@@ -122,6 +167,8 @@
         </div>
       </div>
     </div>
+
+    <button id="back_button">Back</button>
 
     <script type="module" src="./js/index.js"></script>
   </body>

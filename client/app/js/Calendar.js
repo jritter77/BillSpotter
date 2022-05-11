@@ -5,7 +5,15 @@ function createCalendar() {
     let row = $('<div class="row"></div>');
 
     for (let c = 0; c < 7; c++) {
-      row.append($('<p class="calendar_day"></p>'));
+      row.append(
+        $(`
+        <div class="tooltip">
+          <p class="calendar_day">
+          </p>
+          <span class="tooltip_text">This is a tooltip</span>
+        </div>
+      `)
+      );
     }
 
     calendar.append(row);
@@ -35,19 +43,42 @@ function setCalendarBills(bills) {
   let date = new Date();
 
   for (let day of days) {
+    let highlight;
+    let tooltip = day.nextElementSibling;
+
+    tooltip.innerHTML = "";
+
     for (let bill of bills) {
       if (day.innerHTML == parseInt(bill.nextDue.split("-")[2])) {
         if (bill.datePaid) {
-          day.classList.add("paid");
+          $(tooltip).append(`<p>${bill.billName}&nbsp;-&nbsp;Paid</p>`);
+          if (!highlight) {
+            highlight = "paid";
+          }
+          if ($(day).offset().left > window.innerWidth / 2) {
+            tooltip.style.right = "30px";
+          }
         } else {
           if (date.getDate() < parseInt(bill.nextDue.split("-")[2])) {
-            day.classList.add("due");
+            if (highlight !== "pastDue") {
+              highlight = "due";
+            }
+            $(tooltip).append(`<p>${bill.billName}&nbsp;-&nbsp;Due</p>`);
+            if ($(day).offset().left > window.innerWidth / 2) {
+              tooltip.style.right = "30px";
+            }
           } else {
-            day.classList.add("pastDue");
+            highlight = "pastDue";
+            $(tooltip).append(`<p>${bill.billName}&nbsp;-&nbsp;Past Due</p>`);
+            if ($(day).offset().left > window.innerWidth / 2) {
+              tooltip.style.right = "30px";
+            }
           }
         }
       }
     }
+
+    day.classList.add(highlight);
   }
 }
 

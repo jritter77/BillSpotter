@@ -5,7 +5,7 @@
 
 
 #alert_container {
-  position: absolute;
+  position: fixed;
   display: none;
   flex-direction: column;
   justify-content: center;
@@ -16,6 +16,19 @@
 
 #alert_container.active {
   display: flex;
+}
+
+#back_button {
+  display: none;
+  position: fixed;
+  bottom: 2%;
+  right: 2%;
+  font-size: 3em;
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 5% 10%;
+  border-radius: 25px;
 }
 
 body {
@@ -65,6 +78,7 @@ body {
 
 #confirmation_alert p {
   font-size: 2em;
+  text-align: center;
 }
 
 #confirmation_alert div {
@@ -208,4 +222,21 @@ section h1 {
 
 section p {
   font-size: 3em;
+}
+
+#toast {
+  position: sticky;
+  top: 0;
+  background-color: black;
+  color: white;
+  z-index: 1;
+  font-size: 3em;
+  max-height: 0;
+  overflow: hidden;
+  transition-duration: .2s;
+}
+
+#toast.active {
+  max-height: 20vh;
+  transition-duration: .2s;
 }

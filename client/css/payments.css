@@ -1,0 +1,47 @@
+#payment_form {
+    text-align: center;
+    width: 80vw;
+    padding-bottom: 5%;
+  }
+  
+  #payment_form h2 {
+    font-size: 3em;
+    text-decoration: underline;
+  }
+
+  #payment_form .row div {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+  }
+
+  #payment_form input[type='submit'] {
+      padding: 5%;
+      color: white;
+      background-color: black;
+      font-weight: bold;
+      border-radius: 25px;
+      margin-top: 10%;
+  }
+
+  #payment_form input[type='radio'] {
+      width: 32px;
+      height: 32px;
+      margin: 10%;
+  }
+
+  #payment_form input {
+      font-size: 3em;
+      width: 60%;
+      margin: 10%;
+      padding: 5%;
+      border: 8px solid black;
+      border-radius: 25px;
+  }
+
+  #payment_form label {
+    font-size: 2em;
+    text-align: left;
+    margin-left: 5%;
+  }
+

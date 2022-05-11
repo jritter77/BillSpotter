@@ -14,7 +14,7 @@
 }
 
 p.calendar_day {
-  padding: 2%;
+  padding: 20%;
   font-size: 3em;
   margin: 0;
   width: 5vw;
@@ -104,4 +104,46 @@ p.calendar_day {
   justify-content: flex-end;
   align-items: center;
   border-radius: 20px;
+  font-weight: bold;
+}
+
+#shortcut_links img {
+  width: 60%;
+  height: 60%;
+  margin: 10%;
+ }
+
+.tooltip {
+  padding: 2%;
+  position: relative;
+  
+}
+
+.tooltip_text {
+  visibility: hidden;
+  position: absolute;
+  font-size: 3em;
+  background-color: white;
+  border: 8px solid black;
+  padding: 5%;
+  border-radius: 25px;
+  z-index: 1;
+  width: max-content;
+}
+
+.tooltip_text p {
+  width: max-content;
+  padding: 0 5vw;
+}
+
+.calendar_day.paid:hover + .tooltip_text {
+  visibility: visible;
+}
+
+.calendar_day.due:hover + .tooltip_text {
+  visibility: visible;
+}
+
+.calendar_day.pastDue:hover + .tooltip_text {
+  visibility: visible;
 }

@@ -10,7 +10,7 @@ async function loadContent(e) {
 
   let page = getPageFromURL();
   let fragmentId = page.match(/[A-Za-z0-9\-\_]+/)[0];
-  let billName = page.match(/bill=[A-Za-z]+/);
+  let billName = page.match(/bill=[0-9A-Za-z&]+/);
 
   if (billName) {
     billName = billName[0].split("=")[1];
@@ -21,6 +21,14 @@ async function loadContent(e) {
   const sections = document.getElementsByTagName("section");
 
   navDropdown.classList.remove("active");
+
+  if (fragmentId === "home") {
+    $("#back_button").css("display", "none");
+  } else {
+    $("#back_button").css("display", "block");
+  }
+
+  $(".contents").removeClass("active");
 
   for (let sec of sections) {
     if (sec.id === fragmentId) {
@@ -36,6 +44,21 @@ async function loadContent(e) {
             $("#bill_freq")[0].value = bill.freq;
             $("#bill_date_due").val(bill.nextDue);
             $("#bill_amt_due").val(bill.amtDue);
+          }
+        }
+      }
+
+      if (sec.id === "payment_details") {
+        let bills = JSON.parse(sessionStorage.getItem("bills"));
+
+        for (let bill of bills) {
+          if (billName && bill.billName === billName) {
+            $("#pay_bill_name").html(bill.billName);
+            $("#pay_type").html(bill.type);
+            $("#pay_date_due").html(bill.freq);
+            $("#pay_amt_due").html(bill.nextDue);
+            $("#bill_date_paid").html(bill.datePaid);
+            $("#bill_amt_paid").html(bill.datePaid);
           }
         }
       }
