@@ -2,6 +2,7 @@ import { createBillDropdowns, testBills } from "./billDropdown.js";
 import { createCalendar, setCalendarBills, setMonthDates } from "./Calendar.js";
 import { DueBill } from "./DueBill.js";
 import { initNav } from "./navigation.js";
+import { PrevBill } from "./PrevBill.js";
 
 // Initialize navigation
 
@@ -48,6 +49,14 @@ setCalendarBills(testBills);
 for (let bill of testBills) {
   if (!bill.datePaid) {
     $("#next_due_bills").append(DueBill(bill));
+  }
+}
+
+for (let bill of testBills) {
+  if (!bill.datePaid) {
+    $("#due_payments").append(DueBill(bill));
+  } else {
+    $("#prev_payments").append(PrevBill(bill));
   }
 }
 

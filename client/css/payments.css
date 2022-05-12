@@ -45,3 +45,35 @@
     margin-left: 5%;
   }
 
+  #due_payments_container {
+    width: 80%;
+  }
+
+  #prev_payments_container {
+    width: 80%;
+  }
+
+
+  .remove_paid_btn {
+    background-color: red;
+    border-radius: 25px;
+    padding: 0 5%;
+    color: white;
+    font-size: 2em;
+    height: 5%;
+    
+  }
+
+  .prevBill {
+    display: flex;
+    justify-content: space-between;
+    font-size: 3em;
+    padding: 2%;
+    align-items: center;
+  }
+  
+  .prevBill p {
+    font-size: 3rem;
+    margin: 0;
+    padding: 0;
+  }

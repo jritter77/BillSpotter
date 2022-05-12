@@ -70,7 +70,14 @@ p.calendar_day {
   display: flex;
   justify-content: space-between;
   font-size: 3em;
-  padding: 5%;
+  padding: 2%;
+  align-items: center;
+}
+
+.dueBill p {
+  font-size: 3rem;
+  margin: 0;
+  padding: 0;
 }
 
 #next_due {

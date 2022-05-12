@@ -37,13 +37,15 @@ async function loadContent(e) {
       if (sec.id === "edit_bill") {
         let bills = JSON.parse(sessionStorage.getItem("bills"));
 
-        for (let bill of bills) {
-          if (billName && bill.billName === billName) {
-            $("#bill_name").val(bill.billName);
-            $("#bill_type")[0].value = bill.type;
-            $("#bill_freq")[0].value = bill.freq;
-            $("#bill_date_due").val(bill.nextDue);
-            $("#bill_amt_due").val(bill.amtDue);
+        if (billName) {
+          for (let bill of bills) {
+            if (bill.billName === billName) {
+              $("#bill_name").val(bill.billName);
+              $("#bill_type")[0].value = bill.type;
+              $("#bill_freq")[0].value = bill.freq;
+              $("#bill_date_due").val(bill.nextDue);
+              $("#bill_amt_due").val(bill.amtDue);
+            }
           }
         }
       }
@@ -51,14 +53,18 @@ async function loadContent(e) {
       if (sec.id === "payment_details") {
         let bills = JSON.parse(sessionStorage.getItem("bills"));
 
-        for (let bill of bills) {
-          if (billName && bill.billName === billName) {
-            $("#pay_bill_name").html(bill.billName);
-            $("#pay_type").html(bill.type);
-            $("#pay_date_due").html(bill.freq);
-            $("#pay_amt_due").html(bill.nextDue);
-            $("#bill_date_paid").html(bill.datePaid);
-            $("#bill_amt_paid").html(bill.datePaid);
+        if (!billName) {
+          location.hash = "#home";
+        } else {
+          for (let bill of bills) {
+            if (bill.billName === billName) {
+              $("#pay_bill_name").html(bill.billName);
+              $("#pay_type").html(bill.type);
+              $("#pay_date_due").html(bill.freq);
+              $("#pay_amt_due").html(bill.nextDue);
+              $("#bill_date_paid").html(bill.datePaid);
+              $("#bill_amt_paid").html(bill.datePaid);
+            }
           }
         }
       }
