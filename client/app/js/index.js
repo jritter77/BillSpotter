@@ -1,6 +1,7 @@
 import { createBillDropdowns, testBills } from "./billDropdown.js";
 import { createCalendar, setCalendarBills, setMonthDates } from "./Calendar.js";
 import { DueBill } from "./DueBill.js";
+import { Graph } from "./Graph.js";
 import { initNav } from "./navigation.js";
 import { PrevBill } from "./PrevBill.js";
 
@@ -80,3 +81,5 @@ $("#confirm_payment_btn").click((e) => {
   }, 3000);
   history.back();
 });
+
+Graph(testBills);

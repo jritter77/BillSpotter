@@ -18,12 +18,12 @@ const testBills = [
     datePaid: "2022-02-24",
   },
   {
-    billName: "Internet",
+    billName: "Car Payment",
     nextDue: "2022-02-13",
     amtDue: 100,
     status: "current",
     freq: "weekly",
-    type: "home",
+    type: "auto",
     datePaid: null,
   },
 ];
