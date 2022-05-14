@@ -33,6 +33,20 @@ $("#save_changes_btn").click(() => {
     });
 });
 
+$(".deleteBillBtn").click(() => {
+  $("#confirmation_alert p")[0].innerHTML = `
+    Are you sure you would like to delete this bill?
+  `;
+
+  $("#alert_container").toggleClass("active");
+
+  $("#alert_confirm")
+    .off("click")
+    .click(() => {
+      $("#alert_container").toggleClass("active");
+    });
+});
+
 $("#alert_container").click((e) => {
   if (e.target === $("#alert_container")[0]) {
     $("#alert_container").toggleClass("active");

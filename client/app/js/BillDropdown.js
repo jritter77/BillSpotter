@@ -59,7 +59,7 @@ const BillDropdown = ({ billName, nextDue, amtDue, status, freq, type }) => {
       </div>
       <div class="row">
         <button class="editBillBtn">Edit Bill</button>
-        <button>Delete Bill</button>
+        <button class="deleteBillBtn">Delete Bill</button>
       </div>
     </div>
   </div>`);
