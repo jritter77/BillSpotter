@@ -63,133 +63,135 @@
         <h1>Next Due Payments</h1>
         <div id="next_due_bills"></div>
       </div>
-    </div>
 
-    <section id="bills">
-      <h1>My Bills</h1>
-      <div id="bill_dropdowns"></div>
-      <div id="new_bill_btn"><h2>+ New Bill</h2></div>
-    </section>
-
-    <section id="payments">
-      <h1>Payments</h1>
-      <div id="due_payments_container" class="bubble">
-        <h1>Due Payments</h1>
-        <div id="due_payments"></div>
-      </div>
-      <div id="prev_payments_container" class="bubble">
-        <h1>Previous Payments</h1>
-        <div id="prev_payments"></div>
-      </div>
-    </section>
-
-    <section id="summary">
-      <h1>Month Summary</h1>
-      <div id="graph_container" class="bubble">
-        <h1>May - 2022</h1>
-        <div>stuff</div>
-      </div>
-      <div class="row">
-        <div id="categories_container" class="bubble">
-          <h1>Categories</h1>
-          <div></div>
+      <section id="bills">
+        <h1>My Bills</h1>
+        <div id="bill_dropdowns"></div>
+        <div id="new_bill_btn"><h2>+ New Bill</h2></div>
+      </section>
+  
+      <section id="payments">
+        <h1>Payments</h1>
+        <div id="due_payments_container" class="bubble">
+          <h1>Due Payments</h1>
+          <div id="due_payments"></div>
         </div>
-        <div id="totals_container" class="bubble">
-          <h1>Totals</h1>
-          <div id="total_due">
-            <h2>Total Due</h2>
+        <div id="prev_payments_container" class="bubble">
+          <h1>Previous Payments</h1>
+          <div id="prev_payments"></div>
+        </div>
+      </section>
+  
+      <section id="summary">
+        <h1>Month Summary</h1>
+        <div id="graph_container" class="bubble">
+          <h1>May - 2022</h1>
+          <div>stuff</div>
+        </div>
+        <div class="row">
+          <div id="categories_container" class="bubble">
+            <h1>Categories</h1>
             <div></div>
           </div>
-          <div id="total_paid">
-            <h2>Total Paid</h2>
-            <div></div>
+          <div id="totals_container" class="bubble">
+            <h1>Totals</h1>
+            <div id="total_due">
+              <h2>Total Due</h2>
+              <div></div>
+            </div>
+            <div id="total_paid">
+              <h2>Total Paid</h2>
+              <div></div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section id="edit_bill">
-      <form id="edit_bill_form" class="bubble">
-        <h1>Bill Details</h1>
-        <h2>Bill Name</h2>
-        <input id="bill_name" required/>
-        <div class="row">
-          <div>
-            <h2>Type</h2>
-            <select id="bill_type">
-              <option value="home">Home</option>
-              <option value="auto">Auto</option>
-              <option value="medical">Medical</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-          <div>
-            <h2>Frequency</h2>
-            <select id="bill_freq">
-              <option value="monthly">Monthly</option>
-              <option value="weekly">Weekly</option>
-              <option value="annually">Annually</option>
-              <option value="bi-weekly">Bi-weekly</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="row">
-          <div>
-            <h2>Date Due</h2>
-            <input id="bill_date_due" type="date" required/>
-          </div>
-          <div>
-            <h2>Amount Due</h2>
-            <input id="bill_amt_due" type="number" required/>
-          </div>
-        </div>
-      </form>
-      <button id="save_changes_btn">Save Changes</button>
-    </section>
-
-    <section id="payment_details">
-
-        <form id="payment_form" class="bubble">
-          <h1>Payment&nbsp;Details</h1>
+      </section>
+  
+      <section id="edit_bill">
+        <form id="edit_bill_form" class="bubble">
+          <h1>Bill Details</h1>
+          <h2>Bill Name</h2>
+          <input id="bill_name" required/>
           <div class="row">
             <div>
-              <h2>Bill Name</h2>
-              <p id="pay_bill_name"></p>
+              <h2>Type</h2>
+              <select id="bill_type">
+                <option value="home">Home</option>
+                <option value="auto">Auto</option>
+                <option value="medical">Medical</option>
+                <option value="other">Other</option>
+              </select>
             </div>
             <div>
-              <h2>Type</h2>
-              <p id="pay_type"></p>
+              <h2>Frequency</h2>
+              <select id="bill_freq">
+                <option value="monthly">Monthly</option>
+                <option value="weekly">Weekly</option>
+                <option value="annually">Annually</option>
+                <option value="bi-weekly">Bi-weekly</option>
+              </select>
             </div>
           </div>
+  
           <div class="row">
             <div>
               <h2>Date Due</h2>
-              <p id="pay_date_due"></p>
+              <input id="bill_date_due" type="date" required/>
             </div>
             <div>
               <h2>Amount Due</h2>
-              <p id="pay_amt_due"></p>
+              <input id="bill_amt_due" type="number" required/>
             </div>
           </div>
-          <div class="row">
-            <div>
-              <h2>Paid On</h2>
-              <label><input type="radio" id="radio_today" name="pay_date_paid" checked>Today</label>
-              <label><input type="radio" id="radio_other_date" name="pay_date_paid">Other Date:</label>
-              <input id="other_date" type="date" disabled>
-            </div>
-            <div>
-              <h2>Amount Paid</h2>
-              <label><input type="radio" id="radio_full_amt" name="pay_amt_paid" checked>Full Amount</label>
-              <label><input type="radio" id="radio_other_amt" name="pay_amt_paid">Other Amount:</label>
-              <input type="number" id="other_amt" disabled>
-            </div>
-          </div>
-          <input type="submit" id="confirm_payment_btn" value="Confirm Payment">
         </form>
+        <button id="save_changes_btn">Save Changes</button>
+      </section>
+  
+      <section id="payment_details">
+  
+          <form id="payment_form" class="bubble">
+            <h1>Payment&nbsp;Details</h1>
+            <div class="row">
+              <div>
+                <h2>Bill Name</h2>
+                <p id="pay_bill_name"></p>
+              </div>
+              <div>
+                <h2>Type</h2>
+                <p id="pay_type"></p>
+              </div>
+            </div>
+            <div class="row">
+              <div>
+                <h2>Date Due</h2>
+                <p id="pay_date_due"></p>
+              </div>
+              <div>
+                <h2>Amount Due</h2>
+                <p id="pay_amt_due"></p>
+              </div>
+            </div>
+            <div class="row">
+              <div>
+                <h2>Paid On</h2>
+                <label><input type="radio" id="radio_today" name="pay_date_paid" checked>Today</label>
+                <label><input type="radio" id="radio_other_date" name="pay_date_paid">Other Date:</label>
+                <input id="other_date" type="date" disabled>
+              </div>
+              <div>
+                <h2>Amount Paid</h2>
+                <label><input type="radio" id="radio_full_amt" name="pay_amt_paid" checked>Full Amount</label>
+                <label><input type="radio" id="radio_other_amt" name="pay_amt_paid">Other Amount:</label>
+                <input type="number" id="other_amt" disabled>
+              </div>
+            </div>
+            <input type="submit" id="confirm_payment_btn" value="Confirm Payment">
+          </form>
+  
+      </section>
+    </div>
 
-    </section>
+    
 
     <div id="alert_container">
       <div id="confirmation_alert" class="bubble">

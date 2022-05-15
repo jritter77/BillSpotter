@@ -219,10 +219,10 @@ section {
   position: absolute;
   background: linear-gradient(white 50%, var(--main-bg-color));
   transition-duration: 0.2s;
-  padding-top: 10vh;
   border: 4px solid black;
   display: none;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -230,7 +230,6 @@ section > h1 {
   font-size: 2rem;
   width: 100%;
   text-decoration: underline;
-  margin-top: 100px;
   padding-left: 5%;
 }
 
