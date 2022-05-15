@@ -1,3 +1,4 @@
+// create blank calendar structure
 function createCalendar() {
   let calendar = $('<div id="calendar"></div>');
 
@@ -22,6 +23,7 @@ function createCalendar() {
   return calendar;
 }
 
+// Set dates for the current month
 function setMonthDates() {
   let date = new Date();
   date.setDate(1);
@@ -38,6 +40,7 @@ function setMonthDates() {
   }
 }
 
+// highlight all bills on calendar
 function setCalendarBills(bills) {
   let days = $(".calendar_day");
   let date = new Date();

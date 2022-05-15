@@ -1,3 +1,9 @@
+import {
+  updatePaymentDetails,
+  updateEditBill,
+  updateMyBills,
+} from "./pageHandlers.js";
+
 function getPageFromURL() {
   const loc = location.hash.substring(1);
   return loc.split("-")[0];
@@ -6,67 +12,55 @@ function getPageFromURL() {
 // Populate contentDiv wtih retrieved HTML
 async function loadContent(e) {
   e?.preventDefault();
-  const navDropdown = document.getElementById("nav_dropdown");
 
+  // Get elements
+  const navDropdown = document.getElementById("nav_dropdown");
+  const sections = document.getElementsByTagName("section");
+
+  // Split location into page and billName
   let page = getPageFromURL();
   let fragmentId = page.match(/[A-Za-z0-9\-\_]+/)[0];
-  let billName = page.match(/bill=[0-9A-Za-z&]+/);
+  let billName = page.match(/bill=[0-9A-Za-z&_]+/);
 
+  // Display blank edit bill form if no billName
   if (billName) {
     billName = billName[0].split("=")[1];
   } else {
     $("#edit_bill_form")[0].reset();
   }
 
-  const sections = document.getElementsByTagName("section");
-
+  // close nav dropdown on tranition
   navDropdown.classList.remove("active");
 
+  // close all dropdowns on tranition
+  $(".contents").removeClass("active");
+
+  // Display back button if not viewing dashboard
   if (fragmentId === "home") {
     $("#back_button").css("display", "none");
   } else {
     $("#back_button").css("display", "block");
   }
 
-  $(".contents").removeClass("active");
-
+  // Trigger section specific functions
   for (let sec of sections) {
+    // if section = currnet location
     if (sec.id === fragmentId) {
       sec.classList.add("active");
 
+      // if current section = edit_bill
       if (sec.id === "edit_bill") {
-        let bills = JSON.parse(sessionStorage.getItem("bills"));
-
-        if (billName) {
-          for (let bill of bills) {
-            if (bill.billName === billName) {
-              $("#bill_name").val(bill.billName);
-              $("#bill_type")[0].value = bill.type;
-              $("#bill_freq")[0].value = bill.freq;
-              $("#bill_date_due").val(bill.nextDue);
-              $("#bill_amt_due").val(bill.amtDue);
-            }
-          }
-        }
+        updateEditBill(billName);
       }
 
-      if (sec.id === "payment_details") {
-        let bills = JSON.parse(sessionStorage.getItem("bills"));
+      // if current section = payment_details
+      else if (sec.id === "payment_details") {
+        updatePaymentDetails(billName);
+      }
 
-        if (!billName) {
-          location.hash = "#home";
-        } else {
-          for (let bill of bills) {
-            if (bill.billName === billName) {
-              $("#pay_bill_name").html(bill.billName);
-              $("#pay_type").html(bill.type);
-              $("#pay_date_due").html(bill.freq);
-              $("#pay_amt_due").html(bill.nextDue);
-              $("#bill_date_paid").html(bill.datePaid);
-              $("#bill_amt_paid").html(bill.datePaid);
-            }
-          }
-        }
+      // if current section = bills
+      else if (sec.id === "bills") {
+        updateMyBills();
       }
     } else {
       sec.classList.remove("active");
@@ -74,10 +68,12 @@ async function loadContent(e) {
   }
 }
 
+// initialize navigation handlers and elements
 function initNav() {
   const navDropdownBtn = document.getElementById("nav_btn");
   const navDropdown = document.getElementById("nav_dropdown");
 
+  // set onclick handler of nav dropdown button
   navDropdownBtn.onclick = () => {
     navDropdown.classList.toggle("active");
   };

@@ -1,4 +1,7 @@
+import { Alert } from "./Alert";
+
 function PrevBill(bill) {
+  // previous bill element
   let prevBill = $(`
       <div class="prevBill">
         <p>${bill.nextDue}</p>
@@ -6,22 +9,15 @@ function PrevBill(bill) {
       </div>
     `);
 
+  // remove payment button
   let remove = $('<button class="remove_paid_btn">&#9746</button>');
-
   prevBill.append(remove);
 
+  // remove payment handler
   remove.click(() => {
-    $("#confirmation_alert p")[0].innerHTML = `
-        Are you sure you would like to remove this payment?
-      `;
-
-    $("#alert_container").toggleClass("active");
-
-    $("#alert_confirm")
-      .off("click")
-      .click(() => {
-        $("#alert_container").toggleClass("active");
-      });
+    Alert(`Are you sure you would like to remove this payment?`, () =>
+      console.log("confirmed")
+    );
   });
 
   return $("<div></div>").append(prevBill, "<hr>");

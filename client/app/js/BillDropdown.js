@@ -1,3 +1,5 @@
+import { Alert } from "./Alert";
+
 const testBills = [
   {
     billName: "Rent",
@@ -28,6 +30,7 @@ const testBills = [
   },
 ];
 
+// create billDropdown element
 const BillDropdown = ({ billName, nextDue, amtDue, status, freq, type }) => {
   return $(`
     <div class="dropdown">
@@ -65,10 +68,19 @@ const BillDropdown = ({ billName, nextDue, amtDue, status, freq, type }) => {
   </div>`);
 };
 
+// edit bill handler
 const editBill = (billName) => {
-  location.hash = "edit_bill?bill=" + billName;
+  location.hash = "edit_bill?bill=" + billName.replace(" ", "_");
 };
 
+// delete bill handler
+const deleteBill = () => {
+  Alert(`Are you sure you would like to delete this bill?`, () =>
+    console.log("confirmed")
+  );
+};
+
+// dropdown collapse toggle handler
 const toggleCollapse = (dropdown) => {
   for (let el of document.getElementsByClassName("contents")) {
     if (el !== dropdown[0].children[1]) {
@@ -78,6 +90,7 @@ const toggleCollapse = (dropdown) => {
   dropdown[0].children[1].classList.toggle("active");
 };
 
+// create and append all dropdowns for current bills
 const createBillDropdowns = (billArr) => {
   let bill_dropdowns = $("#bill_dropdowns");
   bill_dropdowns.html("");
@@ -86,6 +99,7 @@ const createBillDropdowns = (billArr) => {
     let dropdown = BillDropdown(bill);
     dropdown[0].children[0].onclick = () => toggleCollapse(dropdown);
     dropdown.find(".editBillBtn").click(() => editBill(bill.billName));
+    dropdown.find(".deleteBillBtn").click(deleteBill);
     bill_dropdowns.append(dropdown);
   }
 };

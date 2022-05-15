@@ -1,18 +1,24 @@
+// create graph and set summary values
 const Graph = (bills) => {
+  // grab necessary elements
   let yAxis = $('<div id="graph_y"></div>');
   let xAxis = $('<div id="graph_x"></div>');
   let graph = $("<div id='graph'></div>");
   let cols = $('<div id="column_container"></div>');
 
+  // get bill stats
   let catTotals = getCatTotals(bills);
   let catMax = getCatMax(catTotals);
   let yMax = Math.ceil(catMax / 100) * 100;
 
+  // display summary values
   displayCats(catTotals);
   displayTotals(catTotals);
 
+  // set y-axis numbers
   yAxis.append($(`<p>${yMax}</p>`), $("<p>0</p>"));
 
+  // create graph bars and labels
   for (let cat in catTotals) {
     let group = $(`<div class="col_group"></div>`);
     let due = $('<div class="graph_col_primary"></div>');
@@ -28,12 +34,15 @@ const Graph = (bills) => {
     xAxis.append(`<p>${cat}</p>`);
   }
 
+  // append bars to graph
   graph.append(cols);
 
+  // set background bars
   for (let i = 0; i < 11; i++) {
     graph.append($("<hr>"));
   }
 
+  // clear and append graph
   $("#graph_container > div").html("");
   $("#graph_container > div").append(
     yAxis,
@@ -41,6 +50,7 @@ const Graph = (bills) => {
   );
 };
 
+// return totals object from current bills
 function getCatTotals(bills) {
   let cats = {};
 
@@ -61,6 +71,7 @@ function getCatTotals(bills) {
   return cats;
 }
 
+// return max of categories
 function getCatMax(totals) {
   let max = 0;
   for (let type in totals) {
@@ -71,6 +82,7 @@ function getCatMax(totals) {
   return max;
 }
 
+// display category breakdown
 function displayCats(totals) {
   let cat_container = $("#categories_container > div");
 
@@ -83,6 +95,7 @@ function displayCats(totals) {
   }
 }
 
+// display totals breakdown
 function displayTotals(totals) {
   let due_container = $("#total_due > div");
   let paid_container = $("#total_paid > div");
