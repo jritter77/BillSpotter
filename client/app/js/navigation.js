@@ -42,6 +42,8 @@ async function loadContent(e) {
     $("#back_button").css("display", "block");
   }
 
+  window.scrollTo(0, 0);
+
   // Trigger section specific functions
   for (let sec of sections) {
     // if section = currnet location
