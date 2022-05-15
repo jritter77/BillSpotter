@@ -26,7 +26,7 @@ $test_bills = '[
       "amtDue": 100,
       "status": "current",
       "freq": "weekly",
-      "type": "home",
+      "type": "auto",
       "datePaid": null
     }
   ]';
