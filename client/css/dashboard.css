@@ -3,7 +3,7 @@
 }
 
 #calendar_container h1 {
-  font-size: 3em;
+  font-size: 1rem;
 }
 
 #calendar {
@@ -15,7 +15,7 @@
 
 p.calendar_day {
   padding: 20%;
-  font-size: 3em;
+  font-size: 1rem;
   margin: 0;
   width: 5vw;
   text-align: center;
@@ -23,11 +23,11 @@ p.calendar_day {
 }
 
 .due {
-  border: 4px solid black;
+  border: 1px solid black;
 }
 
 .paid {
-  border: 4px solid black;
+  border: 1px solid black;
   background-color: black;
   color: white;
 }
@@ -61,7 +61,7 @@ p.calendar_day {
 }
 
 #dashboard > h1 {
-  font-size: 3em;
+  font-size: 2rem;
   width: 80%;
   text-decoration: underline;
 }
@@ -69,13 +69,13 @@ p.calendar_day {
 .dueBill {
   display: flex;
   justify-content: space-between;
-  font-size: 3em;
+  font-size: 1rem;
   padding: 2%;
   align-items: center;
 }
 
 .dueBill p {
-  font-size: 3rem;
+  font-size: 1rem;
   margin: 0;
   padding: 0;
 }
@@ -85,7 +85,7 @@ p.calendar_day {
 }
 
 #next_due h1 {
-  font-size: 3em;
+  font-size: 1rem;
 }
 
 #next_due p {
@@ -106,12 +106,13 @@ p.calendar_day {
   width: 20vw;
   height: 20vw;
   color: white;
-  font-size: 2em;
+  font-size: .9rem;
   text-decoration: none;
   justify-content: flex-end;
   align-items: center;
   border-radius: 20px;
   font-weight: bold;
+  padding: 2%;
 }
 
 #shortcut_links img {
@@ -127,9 +128,9 @@ p.calendar_day {
 }
 
 .tooltip_text {
-  visibility: hidden;
+  display: none;
   position: absolute;
-  font-size: 3em;
+  font-size: 1rem;
   background-color: white;
   border: 8px solid black;
   padding: 5%;
@@ -144,13 +145,13 @@ p.calendar_day {
 }
 
 .calendar_day.paid:hover + .tooltip_text {
-  visibility: visible;
+  display: block;
 }
 
 .calendar_day.due:hover + .tooltip_text {
-  visibility: visible;
+  display: block;
 }
 
 .calendar_day.pastDue:hover + .tooltip_text {
-  visibility: visible;
+  display: block;
 }

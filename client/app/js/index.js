@@ -4,17 +4,17 @@ import { getBills } from "./requests.js";
 
 // Initialize navigation
 
-async function startApp() {
-  await setTimeout(() => {
-    let viewHeight = window.visualViewport.height;
-    let viewWidth = window.visualViewport.width;
-    let viewport = document.querySelector("meta[name=viewport");
-    viewport.setAttribute(
-      "content",
-      `height=${viewHeight}, width=${viewWidth}, initial-scale=1.0`
-    );
-  }, 300);
+setTimeout(() => {
+  let viewHeight = window.visualViewport.height;
+  let viewWidth = window.visualViewport.width;
+  let viewport = document.querySelector("meta[name=viewport");
+  viewport.setAttribute(
+    "content",
+    `height=${viewHeight}, width=${viewWidth}, initial-scale=1.0`
+  );
+}, 300);
 
+async function startApp() {
   await getBills();
 
   initNav();
