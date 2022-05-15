@@ -54,6 +54,7 @@ p.calendar_day {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0;
 }
 
 #dashboard a[href="#bills"] {
