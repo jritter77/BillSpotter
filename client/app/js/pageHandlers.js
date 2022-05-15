@@ -32,7 +32,7 @@ function init_editBill() {
 
 // initialize myBills handlers and elements
 function init_myBills() {
-  createBillDropdowns(testBills);
+  createBillDropdowns(JSON.parse(sessionStorage.getItem("bills")));
   $("#new_bill_btn").click(() => (location.hash = "edit_bill"));
 }
 
@@ -69,7 +69,7 @@ function init_paymentDetails() {
 
 // initialize summary handlers and elements
 function init_summary() {
-  Graph(testBills);
+  Graph(JSON.parse(sessionStorage.getItem("bills")));
 }
 
 // initialize common handlers and elements
@@ -141,12 +141,12 @@ function updatePaymentDetails(billName) {
 
 // update summary page
 function updateSummary() {
-  Graph(testBills);
+  Graph(JSON.parse(JSON.parse(sessionStorage.getItem("bills"))));
 }
 
 // update myBills page
 function updateMyBills() {
-  createBillDropdowns(testBills);
+  createBillDropdowns(JSON.parse(sessionStorage.getItem("bills")));
 }
 
 export {
