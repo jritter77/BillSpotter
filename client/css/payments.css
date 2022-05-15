@@ -25,9 +25,9 @@
   }
 
   #payment_form input[type='radio'] {
-      width: 32px;
-      height: 32px;
-      margin: 10%;
+    width: auto;
+      padding: 0;
+      margin: 5%;
   }
 
   #payment_form input {
@@ -35,7 +35,7 @@
       width: 60%;
       margin: 10%;
       padding: 5%;
-      border: 8px solid black;
+      border: 2px solid black;
       border-radius: 25px;
   }
 
