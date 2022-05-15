@@ -1,4 +1,4 @@
-import { testBills } from "./billDropdown.js";
+import { testBills } from "./BillDropdown.js";
 import { initNav } from "./navigation.js";
 import { initAllPages } from "./pageHandlers.js";
 
