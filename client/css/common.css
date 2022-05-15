@@ -1,6 +1,9 @@
 
 :root {
   --main-bg-color: rgb(35, 199, 240);
+  --btn-primary-bg-color: black;
+  --btn-primary-color: white;
+  --btn-danger-bg-color: red;
 }
 
 
