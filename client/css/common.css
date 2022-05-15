@@ -136,10 +136,12 @@ hr {
 
 nav {
   display: flex;
+  position: relative;
   justify-content: flex-end;
   align-items: center;
   background: black;
   width: 100vw;
+  height: 15vh;
 }
 
 nav button {
@@ -185,7 +187,7 @@ nav span {
 nav ul {
   position: absolute;
   overflow: hidden;
-  top: 160px;
+  top: 16vh;
   max-height: 0;
   background: white;
   list-style-type: none;
@@ -197,7 +199,6 @@ nav ul {
 
 nav ul li {
   margin: 0;
-  padding: 16px 10vw;
 }
 
 nav ul li a {
