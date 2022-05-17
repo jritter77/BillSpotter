@@ -55,15 +55,15 @@ function getCatTotals(bills) {
   let cats = {};
 
   for (let bill of bills) {
-    if (cats[bill.type]) {
-      cats[bill.type].total_due += bill.amtDue;
+    if (cats[bill.bill_type]) {
+      cats[bill.bill_type].total_due += bill.bill_amt_due;
       if (bill.datePaid) {
-        cats[bill.type].total_paid += bill.amtDue;
+        cats[bill.bill_type].total_paid += bill.bill_amt_paid;
       }
     } else {
-      cats[bill.type] = {
-        total_due: bill.amtDue,
-        total_paid: bill.datePaid ? bill.amtDue : 0,
+      cats[bill.bill_type] = {
+        total_due: bill.bill_amt_due,
+        total_paid: bill.bill_date_paid ? bill.bill_amt_due : 0,
       };
     }
   }

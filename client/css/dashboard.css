@@ -82,6 +82,7 @@ p.calendar_day {
 }
 
 #next_due {
+  margin-top: 5%;
   width: 80%;
 }
 
@@ -95,9 +96,8 @@ p.calendar_day {
 
 #shortcut_links {
   display: flex;
-  width: 100%;
-  height: 20vw;
-  justify-content: space-evenly;
+  width: 80%;
+  justify-content: space-between;
 }
 
 #shortcut_links a {

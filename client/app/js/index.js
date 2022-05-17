@@ -4,6 +4,7 @@ import { getBills } from "./requests.js";
 
 // Initialize navigation
 
+// Set window dimensions as constant to prevent soft keyboard from interfering with layout
 setTimeout(() => {
   let viewHeight = window.visualViewport.height;
   let viewWidth = window.visualViewport.width;
@@ -21,5 +22,8 @@ async function startApp() {
 
   initAllPages();
 }
+
+let user = { user_id: 1, username: "admin", session_key: "1234" };
+sessionStorage.setItem("user", JSON.stringify(user));
 
 startApp();

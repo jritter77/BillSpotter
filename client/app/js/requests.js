@@ -1,8 +1,10 @@
 // fetches bill from server and saves them in session storage for app use
 async function getBills() {
-  //TODO: send user and current API key in request
+  let user = JSON.parse(sessionStorage.getItem("user"));
+  let endpoint = "../../server/bills/getBills.php";
+  let payload = { req: JSON.stringify({ user: user }) };
 
-  let result = await $.get("../../server/test.php");
+  let result = await $.get(endpoint, payload);
   sessionStorage.setItem("bills", result);
 }
 

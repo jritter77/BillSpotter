@@ -106,14 +106,12 @@ function updateEditBill(billName) {
 
   if (billName) {
     for (let bill of bills) {
-      console.log(bill.billName, billName);
-
-      if (bill.billName === billName.replace("_", " ")) {
-        $("#bill_name").val(bill.billName);
-        $("#bill_type")[0].value = bill.type;
-        $("#bill_freq")[0].value = bill.freq;
-        $("#bill_date_due").val(bill.nextDue);
-        $("#bill_amt_due").val(bill.amtDue);
+      if (bill.bill_name === billName.replace("_", " ")) {
+        $("#bill_name").val(bill.bill_name);
+        $("#bill_type")[0].value = bill.bill_type;
+        $("#bill_freq")[0].value = bill.bill_freq;
+        $("#bill_date_due").val(bill.bill_due_date);
+        $("#bill_amt_due").val(bill.bill_amt_due);
       }
     }
   }
@@ -127,13 +125,13 @@ function updatePaymentDetails(billName) {
     location.hash = "#home";
   } else {
     for (let bill of bills) {
-      if (bill.billName === billName) {
-        $("#pay_bill_name").html(bill.billName);
-        $("#pay_type").html(bill.type);
-        $("#pay_date_due").html(bill.freq);
-        $("#pay_amt_due").html(bill.nextDue);
-        $("#bill_date_paid").html(bill.datePaid);
-        $("#bill_amt_paid").html(bill.datePaid);
+      if (bill.bill_name === billName) {
+        $("#pay_bill_name").html(bill.bill_name);
+        $("#pay_type").html(bill.bill_type);
+        $("#pay_date_due").html(bill.bill_freq);
+        $("#pay_amt_due").html(bill.bill_amt_due);
+        $("#bill_date_paid").html(bill.bill_date_paid);
+        $("#bill_amt_paid").html(bill.bill_amt_paid);
       }
     }
   }

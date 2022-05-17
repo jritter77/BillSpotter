@@ -31,33 +31,33 @@ const testBills = [
 ];
 
 // create billDropdown element
-const BillDropdown = ({ billName, nextDue, amtDue, status, freq, type }) => {
+const BillDropdown = (bill) => {
   return $(`
     <div class="dropdown">
-    <h2>${billName}</h2>
+    <h2>${bill.bill_name}</h2>
     <div class="contents">
       <div class="row">
         <div class="col">
           <h3>Next Due Date</h3>
-          <p>${nextDue}</p>
+          <p>${bill.bill_due_date}</p>
         </div>
         <div class="col">
           <h3>Amount Due</h3>
-          <p>$${amtDue}.00</p>
+          <p>$${bill.bill_amt_due}.00</p>
         </div>
       </div>
       <div class="row">
         <div class="col">
           <h3>Status</h3>
-          <p>${status}</p>
+          <p>current</p>
         </div>
         <div class="col">
           <h3>Frequency</h3>
-          <p>${freq}</p>
+          <p>${bill.bill_freq}</p>
         </div>
         <div class="col">
           <h3>Type</h3>
-          <p>${type}</p>
+          <p>${bill.bill_type}</p>
         </div>
       </div>
       <div class="row">
@@ -98,7 +98,7 @@ const createBillDropdowns = (billArr) => {
   for (let bill of billArr) {
     let dropdown = BillDropdown(bill);
     dropdown[0].children[0].onclick = () => toggleCollapse(dropdown);
-    dropdown.find(".editBillBtn").click(() => editBill(bill.billName));
+    dropdown.find(".editBillBtn").click(() => editBill(bill.bill_name));
     dropdown.find(".deleteBillBtn").click(deleteBill);
     bill_dropdowns.append(dropdown);
   }
