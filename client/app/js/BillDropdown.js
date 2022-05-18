@@ -69,8 +69,8 @@ const BillDropdown = (bill) => {
 };
 
 // edit bill handler
-const editBill = (billName) => {
-  location.hash = "edit_bill?bill=" + billName.replace(" ", "_");
+const editBill = (bill_id) => {
+  location.hash = "edit_bill?bill=" + bill_id;
 };
 
 // delete bill handler
@@ -98,7 +98,7 @@ const createBillDropdowns = (billArr) => {
   for (let bill of billArr) {
     let dropdown = BillDropdown(bill);
     dropdown[0].children[0].onclick = () => toggleCollapse(dropdown);
-    dropdown.find(".editBillBtn").click(() => editBill(bill.bill_name));
+    dropdown.find(".editBillBtn").click(() => editBill(bill.bill_id));
     dropdown.find(".deleteBillBtn").click(deleteBill);
     bill_dropdowns.append(dropdown);
   }

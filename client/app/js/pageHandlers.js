@@ -2,8 +2,10 @@ import { Alert } from "./Alert.js";
 import { createBillDropdowns, testBills } from "./BillDropdown.js";
 import { createCalendar, setCalendarBills, setMonthDates } from "./Calendar.js";
 import { DueBill } from "./DueBill.js";
+import { collectEditBill } from "./formCollection.js";
 import { Graph } from "./Graph.js";
 import { PrevBill } from "./PrevBill.js";
+import { newBill } from "./requests.js";
 
 // initialize dashboard handlers and elements
 function init_dashboard() {
@@ -24,9 +26,7 @@ function init_dashboard() {
 function init_editBill() {
   // set onclick handler of saveChanges button
   $("#save_changes_btn").click(() => {
-    Alert(`Are you sure you would like to save these changes?`, () =>
-      console.log("confirmed")
-    );
+    Alert(`Are you sure you would like to save these changes?`, newBill);
   });
 }
 
@@ -101,16 +101,16 @@ function initAllPages() {
 }
 
 // update editBill page
-function updateEditBill(billName) {
+function updateEditBill(bill_id) {
   let bills = JSON.parse(sessionStorage.getItem("bills"));
 
-  if (billName) {
+  if (bill_id) {
     for (let bill of bills) {
-      if (bill.bill_name === billName.replace("_", " ")) {
+      if (bill.bill_id === parseInt(bill_id)) {
         $("#bill_name").val(bill.bill_name);
         $("#bill_type")[0].value = bill.bill_type;
         $("#bill_freq")[0].value = bill.bill_freq;
-        $("#bill_date_due").val(bill.bill_due_date);
+        $("#bill_due_date").val(bill.bill_due_date);
         $("#bill_amt_due").val(bill.bill_amt_due);
       }
     }
@@ -118,14 +118,14 @@ function updateEditBill(billName) {
 }
 
 // update paymentDetails page
-function updatePaymentDetails(billName) {
+function updatePaymentDetails(bill_id) {
   let bills = JSON.parse(sessionStorage.getItem("bills"));
 
-  if (!billName) {
+  if (!bill_id) {
     location.hash = "#home";
   } else {
     for (let bill of bills) {
-      if (bill.bill_name === billName) {
+      if (bill.bill_id === bill_id) {
         $("#pay_bill_name").html(bill.bill_name);
         $("#pay_type").html(bill.bill_type);
         $("#pay_date_due").html(bill.bill_freq);

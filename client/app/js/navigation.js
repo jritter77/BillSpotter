@@ -20,11 +20,11 @@ async function loadContent(e) {
   // Split location into page and billName
   let page = getPageFromURL();
   let fragmentId = page.match(/[A-Za-z0-9\-\_]+/)[0];
-  let billName = page.match(/bill=[0-9A-Za-z&_]+/);
+  let bill_id = page.match(/bill=[0-9]+/);
 
   // Display blank edit bill form if no billName
-  if (billName) {
-    billName = billName[0].split("=")[1];
+  if (bill_id) {
+    bill_id = bill_id[0].split("=")[1];
   } else {
     $("#edit_bill_form")[0].reset();
   }
@@ -52,12 +52,12 @@ async function loadContent(e) {
 
       // if current section = edit_bill
       if (sec.id === "edit_bill") {
-        updateEditBill(billName);
+        updateEditBill(bill_id);
       }
 
       // if current section = payment_details
       else if (sec.id === "payment_details") {
-        updatePaymentDetails(billName);
+        updatePaymentDetails(bill_id);
       }
 
       // if current section = bills
