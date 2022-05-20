@@ -9,13 +9,17 @@ import { confirmPaid, editBill, newBill } from "./requests.js";
 
 // initialize dashboard handlers and elements
 function init_dashboard() {
-  let bills = JSON.parse(sessionStorage.getItem("bills"));
+  try {
+    let bills = JSON.parse(sessionStorage.getItem("bills"));
 
-  // Create calendar
-  $("#calendar_container").append(createCalendar());
-  setMonthDates();
+    // Create calendar
+    $("#calendar_container").append(createCalendar());
+    setMonthDates();
 
-  setCalendarBills(bills);
+    setCalendarBills(bills);
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 // initialize myBills handlers and elements
