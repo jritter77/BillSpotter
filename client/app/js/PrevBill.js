@@ -1,11 +1,12 @@
 import { Alert } from "./Alert.js";
+import { deletePayment } from "./requests.js";
 
 function PrevBill(bill) {
   // previous bill element
   let prevBill = $(`
       <div class="prevBill">
-        <p>${bill.nextDue}</p>
-        <p>${bill.billName}</p>
+        <p>${bill.bill_due_date}</p>
+        <p>${bill.bill_name}</p>
       </div>
     `);
 
@@ -15,9 +16,9 @@ function PrevBill(bill) {
 
   // remove payment handler
   remove.click(() => {
-    Alert(`Are you sure you would like to remove this payment?`, () =>
-      console.log("confirmed")
-    );
+    Alert(`Are you sure you would like to remove this payment?`, () => {
+      deletePayment(bill);
+    });
   });
 
   return $("<div></div>").append(prevBill, "<hr>");

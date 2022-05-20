@@ -32,9 +32,9 @@
 
   #payment_form input {
       font-size: 1rem;
-      width: 60%;
-      margin: 10%;
+      width: 80%;
       padding: 5%;
+      margin-left: 5%;
       border: 2px solid black;
       border-radius: 25px;
   }

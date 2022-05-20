@@ -1,4 +1,5 @@
 import { Alert } from "./Alert.js";
+import { deleteBill } from "./requests.js";
 
 const testBills = [
   {
@@ -74,10 +75,10 @@ const editBill = (bill_id) => {
 };
 
 // delete bill handler
-const deleteBill = () => {
-  Alert(`Are you sure you would like to delete this bill?`, () =>
-    console.log("confirmed")
-  );
+const deleteBillHandler = (bill) => {
+  Alert(`Are you sure you would like to delete this bill?`, () => {
+    deleteBill(bill);
+  });
 };
 
 // dropdown collapse toggle handler
@@ -99,7 +100,7 @@ const createBillDropdowns = (billArr) => {
     let dropdown = BillDropdown(bill);
     dropdown[0].children[0].onclick = () => toggleCollapse(dropdown);
     dropdown.find(".editBillBtn").click(() => editBill(bill.bill_id));
-    dropdown.find(".deleteBillBtn").click(deleteBill);
+    dropdown.find(".deleteBillBtn").click(() => deleteBillHandler(bill));
     bill_dropdowns.append(dropdown);
   }
 };

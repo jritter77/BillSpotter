@@ -2,6 +2,9 @@ import {
   updatePaymentDetails,
   updateEditBill,
   updateMyBills,
+  updateDashboard,
+  updateSummary,
+  updatePayments,
 } from "./pageHandlers.js";
 
 function getPageFromURL() {
@@ -38,6 +41,7 @@ async function loadContent(e) {
   // Display back button if not viewing dashboard
   if (fragmentId === "home") {
     $("#back_button").css("display", "none");
+    updateDashboard();
   } else {
     $("#back_button").css("display", "block");
   }
@@ -63,6 +67,16 @@ async function loadContent(e) {
       // if current section = bills
       else if (sec.id === "bills") {
         updateMyBills();
+      }
+
+      // if current section = payments
+      else if (sec.id === "payments") {
+        updatePayments();
+      }
+
+      // if current section = summary
+      else if (sec.id === "summary") {
+        updateSummary();
       }
     } else {
       sec.classList.remove("active");

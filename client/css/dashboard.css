@@ -35,6 +35,7 @@ p.calendar_day {
 .pastDue {
   background-color: red;
   color: white;
+  border: none;
 }
 
 .confirm_paid_btn {

@@ -51,10 +51,14 @@ function setCalendarBills(bills) {
 
     tooltip.innerHTML = "";
 
+    day.classList.remove("paid");
+    day.classList.remove("due");
+    day.classList.remove("pastDue");
+
     for (let bill of bills) {
-      if (day.innerHTML == parseInt(bill.nextDue.split("-")[2])) {
-        if (bill.datePaid) {
-          $(tooltip).append(`<p>${bill.billName}&nbsp;-&nbsp;Paid</p>`);
+      if (day.innerHTML == parseInt(bill.bill_due_date.split("-")[2])) {
+        if (bill.bill_date_paid) {
+          $(tooltip).append(`<p>${bill.bill_name}&nbsp;-&nbsp;Paid</p>`);
           if (!highlight) {
             highlight = "paid";
           }
@@ -62,17 +66,17 @@ function setCalendarBills(bills) {
             tooltip.style.right = "30px";
           }
         } else {
-          if (date.getDate() < parseInt(bill.nextDue.split("-")[2])) {
+          if (date.getDate() < parseInt(bill.bill_due_date.split("-")[2])) {
             if (highlight !== "pastDue") {
               highlight = "due";
             }
-            $(tooltip).append(`<p>${bill.billName}&nbsp;-&nbsp;Due</p>`);
+            $(tooltip).append(`<p>${bill.bill_name}&nbsp;-&nbsp;Due</p>`);
             if ($(day).offset().left > window.innerWidth / 2) {
               tooltip.style.right = "30px";
             }
           } else {
             highlight = "pastDue";
-            $(tooltip).append(`<p>${bill.billName}&nbsp;-&nbsp;Past Due</p>`);
+            $(tooltip).append(`<p>${bill.bill_name}&nbsp;-&nbsp;Past Due</p>`);
             if ($(day).offset().left > window.innerWidth / 2) {
               tooltip.style.right = "30px";
             }
@@ -81,7 +85,9 @@ function setCalendarBills(bills) {
       }
     }
 
-    day.classList.add(highlight);
+    if (highlight) {
+      day.classList.add(highlight);
+    }
   }
 }
 

@@ -1,4 +1,5 @@
-import { collectEditBill } from "./formCollection";
+import { collectEditBill, collectPaymentDetails } from "./formCollection.js";
+import { updateMyBills, updatePayments } from "./pageHandlers.js";
 
 // fetches bill from server and saves them in session storage for app use
 async function getBills() {
@@ -10,10 +11,8 @@ async function getBills() {
   sessionStorage.setItem("bills", result);
 }
 
+// grabs input from edit_bill_form and sends a request to create a new bill in the db
 async function newBill() {
-  //TODO: Send POST request containing new bill, current user, and current API key.
-  //TODO: Return 'SUCCESS' or 'FAILURE' depending on result
-
   let bill = collectEditBill();
 
   let user = JSON.parse(sessionStorage.getItem("user"));
@@ -21,27 +20,77 @@ async function newBill() {
   let payload = { req: JSON.stringify({ user: user, bill: bill }) };
 
   let result = await $.post(endpoint, payload);
+  await getBills();
+
+  history.back();
+
   console.log(result);
 }
 
-async function editBill(bill) {
-  //TODO: Send POST request containing edited bill, current user, and current API key.
-  //TODO: Return 'SUCCESS' or 'FAILURE' depending on result
+// grabs input from edit_bill_form and sends a request to update bill in db
+async function editBill(bill_id) {
+  let bill = collectEditBill();
+
+  bill.bill_id = bill_id;
+
+  let user = JSON.parse(sessionStorage.getItem("user"));
+  let endpoint = "../../server/bills/editBill.php";
+  let payload = { req: JSON.stringify({ user: user, bill: bill }) };
+
+  let result = await $.post(endpoint, payload);
+  await getBills();
+
+  history.back();
+
+  console.log(result);
 }
 
-async function confirmPaid(bill) {
-  //TODO: Send POST request containing paid date, paid amt, current user, and current API key.
-  //TODO: Return 'SUCCESS' or 'FAILURE' depending on result
+// grabs information from payment_form and sends a request update the date paid and amt paid of bill
+async function confirmPaid(bill_id) {
+  let bill = collectPaymentDetails();
+
+  bill.bill_id = bill_id;
+
+  let user = JSON.parse(sessionStorage.getItem("user"));
+  let endpoint = "../../server/bills/confirmPaid.php";
+  let payload = { req: JSON.stringify({ user: user, bill: bill }) };
+
+  let result = await $.post(endpoint, payload);
+  await getBills();
+
+  console.log(location);
+
+  history.back();
+
+  console.log(result);
 }
 
+// deletes entire row of specified bill
 async function deleteBill(bill) {
-  //TODO: Send POST request containing bill_id, current user, and current API key.
-  //TODO: Return 'SUCCESS' or 'FAILURE' depending on result
+  let user = JSON.parse(sessionStorage.getItem("user"));
+  let endpoint = "../../server/bills/deleteBill.php";
+  let payload = { req: JSON.stringify({ user: user, bill: bill }) };
+
+  let result = await $.post(endpoint, payload);
+  await getBills();
+
+  updateMyBills();
+
+  console.log(result);
 }
 
+// sets the date paid and amt paid of bill to NULL
 async function deletePayment(bill) {
-  //TODO: Send POST request containing bill_id, current user, and current API key.
-  //TODO: Return 'SUCCESS' or 'FAILURE' depending on result
+  let user = JSON.parse(sessionStorage.getItem("user"));
+  let endpoint = "../../server/bills/deletePayment.php";
+  let payload = { req: JSON.stringify({ user: user, bill: bill }) };
+
+  let result = await $.post(endpoint, payload);
+  await getBills();
+
+  updatePayments();
+
+  console.log(result);
 }
 
 export { getBills, newBill, editBill, confirmPaid, deleteBill, deletePayment };

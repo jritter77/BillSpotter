@@ -1,30 +1,45 @@
 <?php
-// Connect to database 
-$db = new SQLite3('../../data/billSpotter.db');
 
-// get params from request
-$req = json_decode($_GET['req']);
-$user = $req->user;
+try {
+  // Connect to database 
+  $db = new SQLite3('../../data/billSpotter.db');
 
-// sqlite3 command to be executed
-$stmt = $db->prepare("SELECT * FROM bills WHERE user_id = :user_id");
+  // get params from request
+  $req = json_decode($_GET['req']);
+  $user = $req->user;
 
-// fill in parameters
-$stmt->bindValue(':user_id', $user->user_id);
+  // sqlite3 command to be executed
+  $stmt = $db->prepare("SELECT * FROM bills WHERE user_id = :user_id");
 
-// Execute the sqlite3 command
-$result = $stmt->execute();
+  // fill in parameters
+  $stmt->bindValue(':user_id', $user->user_id);
 
-// extract data into array 
-$myArr = array(); 
-while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
-  array_push($myArr, $row);
+
+  $result = $stmt->execute();
+
+  if ($result) {
+    // extract data into array 
+    $myArr = array(); 
+    while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
+      array_push($myArr, $row);
+    }
+
+    // Return user instance 
+    echo json_encode($myArr);
+
+    $db->close();
+    unset($db);
+  }
+  else {
+      throw new Exception($db->lastErrorMsg());
+  }
+
+  
+  
+} catch (Exception $e) {
+  echo $e;
 }
 
-// Return user instance 
-echo json_encode($myArr);
 
-$db->close();
-unset($db);
 
 ?>
