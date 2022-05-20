@@ -3,12 +3,16 @@ import { updateMyBills, updatePayments } from "./pageHandlers.js";
 
 // fetches bill from server and saves them in session storage for app use
 async function getBills() {
-  let user = JSON.parse(sessionStorage.getItem("user"));
-  let endpoint = "../../server/bills/getBills.php";
-  let payload = { req: JSON.stringify({ user: user }) };
+  try {
+    let user = JSON.parse(sessionStorage.getItem("user"));
+    let endpoint = "../../server/bills/getBills.php";
+    let payload = { req: JSON.stringify({ user: user }) };
 
-  let result = await $.get(endpoint, payload);
-  sessionStorage.setItem("bills", result);
+    let result = await $.get(endpoint, payload);
+    sessionStorage.setItem("bills", result);
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 // grabs input from edit_bill_form and sends a request to create a new bill in the db
