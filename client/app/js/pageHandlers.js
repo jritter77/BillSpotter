@@ -10,6 +10,7 @@ import { confirmPaid, editBill, newBill } from "./requests.js";
 // initialize dashboard handlers and elements
 function init_dashboard() {
   try {
+    console.log(sessionStorage.getItem("bills"));
     let bills = JSON.parse(sessionStorage.getItem("bills"));
 
     // Create calendar
