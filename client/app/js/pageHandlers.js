@@ -1,8 +1,7 @@
 import { Alert } from "./Alert.js";
-import { createBillDropdowns, testBills } from "./BillDropdown.js";
+import { createBillDropdowns } from "./BillDropdown.js";
 import { createCalendar, setCalendarBills, setMonthDates } from "./Calendar.js";
 import { DueBill } from "./DueBill.js";
-import { collectEditBill } from "./formCollection.js";
 import { Graph } from "./Graph.js";
 import { PrevBill } from "./PrevBill.js";
 import { confirmPaid, editBill, newBill } from "./requests.js";
@@ -10,7 +9,6 @@ import { confirmPaid, editBill, newBill } from "./requests.js";
 // initialize dashboard handlers and elements
 function init_dashboard() {
   try {
-    console.log(sessionStorage.getItem("bills"));
     let bills = JSON.parse(sessionStorage.getItem("bills"));
 
     // Create calendar

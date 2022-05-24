@@ -62,8 +62,6 @@ async function confirmPaid(bill_id) {
   let result = await $.post(endpoint, payload);
   await getBills();
 
-  console.log(location);
-
   history.back();
 
   console.log(result);
