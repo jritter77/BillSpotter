@@ -6,11 +6,19 @@
       name="description"
       content="A simple and easy to use web-app designed to make keeping track of bills a breeze!"
     />
+
+    <meta
+      name="viewport"
+      content="width=device-width, height=device-height, initial-scale=1"
+    />
+
     <link rel="stylesheet" href="../css/common.css" />
     <link rel="stylesheet" href="../css/splash.css" />
     <link rel="stylesheet" href="../css/about.css" />
     <link rel="stylesheet" href="../css/features.css" />
     <link rel="stylesheet" href="../css/animate.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   </head>
 
   <body>
@@ -57,10 +65,7 @@
     </div>
 
     <section id="about">
-      <div class="close">
-        <a href="#home">X</a>
-      </div>
-      <div class="bubble">
+      <div id="about_info" class="bubble">
         <h1>Bill tracking made simple</h1>
         <p>
           Bill Spotter is a simple and easy to use web-app designed make keeping
@@ -86,10 +91,7 @@
     </section>
 
     <section id="features">
-      <div class="close">
-        <a href="#home">X</a>
-      </div>
-      <div class="bubble">
+      <div id="features_info" class="bubble">
         <h1>Highlighted Features</h1>
         <ul>
           <li>Simple and easy to use!</li>
@@ -103,6 +105,8 @@
 
       <a href="../signup/" class="link_button">Get Started</a>
     </section>
+
+    <button class="back_button">Back</button>
 
     <script type="module" src="./js/index.js"></script>
   </body>

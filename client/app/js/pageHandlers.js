@@ -55,7 +55,7 @@ function init_common() {
     $("#alert_container").toggleClass("active");
   });
 
-  $("#back_button").click(() => {
+  $(".back_button").click(() => {
     history.back();
   });
 }

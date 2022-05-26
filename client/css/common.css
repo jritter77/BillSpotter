@@ -4,6 +4,7 @@
   --btn-primary-bg-color: black;
   --btn-primary-color: white;
   --btn-danger-bg-color: red;
+  font-size: medium;
 }
 
 
@@ -21,7 +22,7 @@
   display: flex;
 }
 
-#back_button {
+.back_button {
   display: none;
   position: fixed;
   bottom: 2%;
@@ -46,7 +47,7 @@ body {
   font-family: sans-serif;
   width: 100%;
   height: 100%;
-  background: var(--main-bg-color);
+  background: linear-gradient(white 50%, var(--main-bg-color));
 }
 
 .bubble {
@@ -123,16 +124,53 @@ hr {
   width: 80%;
 }
 
+
+
 .link_button {
   background: black;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 2rem;
   color: white;
   padding: 16px;
   text-decoration: none;
   text-align: center;
   margin: 5%;
 }
+
+#login_form {
+  display: flex;
+  flex-direction: column;
+  margin: 10%;
+}
+
+#login_form label {
+  font-weight: bold;
+  font-size: 1em;
+}
+
+
+#login_form input {
+  margin-top: 16px;
+  margin-bottom: 32px;
+  font-size: 1em;
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 8px;
+}
+
+#login_form input[type="submit"] {
+  margin: 10%;
+  height: 10%;
+  background: black;
+  color: white;
+  font-size: 2em;
+}
+
+
+#login_form input:focus {
+  border: 8px solid black;
+}
+
 
 nav {
   display: flex;

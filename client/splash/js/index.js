@@ -15,6 +15,13 @@ async function loadContent(e) {
 
   navDropdown.classList.remove("active");
 
+  // Display back button if not viewing dashboard
+  if (fragmentId === "home") {
+    $(".back_button").css("display", "none");
+  } else {
+    $(".back_button").css("display", "block");
+  }
+
   for (let sec of sections) {
     if (sec.id === fragmentId) {
       sec.classList.add("active");
@@ -38,3 +45,18 @@ loadContent();
 
 // add event listener for hash
 window.addEventListener("hashchange", loadContent);
+
+// Set window dimensions as constant to prevent soft keyboard from interfering with layout
+setTimeout(() => {
+  let viewHeight = window.visualViewport.height;
+  let viewWidth = window.visualViewport.width;
+  let viewport = document.querySelector("meta[name=viewport");
+  viewport.setAttribute(
+    "content",
+    `height=${viewHeight}, width=${viewWidth}, initial-scale=1.0`
+  );
+}, 300);
+
+$(".back_button").click(() => {
+  history.back();
+});

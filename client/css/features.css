@@ -6,11 +6,15 @@
 }
 
 #features ul {
-  font-size: 2em;
+  font-size: 1em;
 }
 
 #features li {
-  font-size: 2em;
+  font-size: 1em;
   font-weight: bold;
   margin: 5%;
+}
+
+#features_info {
+  margin-top: 20vh;
 }

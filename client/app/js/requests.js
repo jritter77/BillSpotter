@@ -1,5 +1,5 @@
 import { collectEditBill, collectPaymentDetails } from "./formCollection.js";
-import { updateMyBills, updatePayments } from "./pageHandlers.js";
+import { initAllPages, updateMyBills, updatePayments } from "./pageHandlers.js";
 
 // fetches bill from server and saves them in session storage for app use
 async function getBills() {
@@ -95,4 +95,21 @@ async function deletePayment(bill) {
   console.log(result);
 }
 
-export { getBills, newBill, editBill, confirmPaid, deleteBill, deletePayment };
+async function login(username, password) {
+  let endpoint = "../../server/users/userLogin.php";
+  let payload = { req: JSON.stringify({ username, password }) };
+
+  let result = await $.post(endpoint, payload);
+  sessionStorage.setItem("user", result);
+  location.reload();
+}
+
+export {
+  getBills,
+  newBill,
+  editBill,
+  confirmPaid,
+  deleteBill,
+  deletePayment,
+  login,
+};

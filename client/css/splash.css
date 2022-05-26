@@ -1,5 +1,5 @@
 #splash li {
-  font-size: 2em;
+  font-size: 1em;
   font-weight: bold;
   margin: 5%;
 }
@@ -20,7 +20,7 @@
 }
 
 #link_row_1 a {
-  width: 45%;
+  width: 70%;
 }
 
 #link_row_2 {
@@ -38,12 +38,12 @@
   flex-direction: column;
   justify-content: space-around;
   align-content: center;
-  background: linear-gradient(white 50%, red);
+  background: linear-gradient(white 50%, var(--main-bg-color));
   background-repeat: no-repeat;
 }
 
 #splash h1 {
-  font-size: 6em;
+  font-size: 2em;
   text-align: center;
   background: black;
   color: white;

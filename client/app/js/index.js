@@ -1,8 +1,9 @@
+import { Login } from "./login.js";
 import { initNav } from "./navigation.js";
 import { initAllPages } from "./pageHandlers.js";
 import { getBills } from "./requests.js";
 
-// Initialize navigation
+let user = { user_id: 1, username: "admin", session_key: "1234" };
 
 // Set window dimensions as constant to prevent soft keyboard from interfering with layout
 setTimeout(() => {
@@ -16,14 +17,17 @@ setTimeout(() => {
 }, 300);
 
 async function startApp() {
-  await getBills();
+  if (sessionStorage.getItem("user")) {
+    await getBills();
 
-  initNav();
+    initNav();
 
-  initAllPages();
+    initAllPages();
+  } else {
+    $("#dashboard").hide();
+    $("body").append(Login());
+    initNav();
+  }
 }
-
-let user = { user_id: 1, username: "admin", session_key: "1234" };
-sessionStorage.setItem("user", JSON.stringify(user));
 
 startApp();

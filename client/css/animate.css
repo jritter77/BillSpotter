@@ -37,6 +37,10 @@ a[href="#features"] {
   animation-duration: 1s, 1.5s;
 }
 
+#about_info {
+  margin-top: 20vh;
+}
+
 nav li:hover {
   background: rgb(192, 192, 192);
   transition: 0.5s;
@@ -54,10 +58,4 @@ section.active {
 #splash a {
   animation-name: fadeInAndBounce, tempHide;
   transition-duration: 1s;
-}
-
-#splash a:hover {
-  transition-duration: 1s;
-  width: 50%;
-  height: 110%;
 }

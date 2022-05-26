@@ -38,12 +38,16 @@ async function loadContent(e) {
   // close all dropdowns on tranition
   $(".contents").removeClass("active");
 
+  if (!sessionStorage.getItem("user")) {
+    return;
+  }
+
   // Display back button if not viewing dashboard
   if (fragmentId === "home") {
-    $("#back_button").css("display", "none");
+    $(".back_button").css("display", "none");
     updateDashboard();
   } else {
-    $("#back_button").css("display", "block");
+    $(".back_button").css("display", "block");
   }
 
   window.scrollTo(0, 0);
