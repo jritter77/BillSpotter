@@ -6,6 +6,7 @@ import {
   updateSummary,
   updatePayments,
 } from "./pageHandlers.js";
+import { verifyUser } from "./requests.js";
 
 function getPageFromURL() {
   const loc = location.hash.substring(1);
@@ -15,6 +16,10 @@ function getPageFromURL() {
 // Populate contentDiv wtih retrieved HTML
 async function loadContent(e) {
   e?.preventDefault();
+
+  if (sessionStorage.getItem("user")) {
+    verifyUser();
+  }
 
   // Get elements
   const navDropdown = document.getElementById("nav_dropdown");

@@ -1,7 +1,7 @@
 import { Login } from "./login.js";
 import { initNav } from "./navigation.js";
 import { initAllPages } from "./pageHandlers.js";
-import { getBills } from "./requests.js";
+import { getBills, verifyUser } from "./requests.js";
 
 let user = { user_id: 1, username: "admin", session_key: "1234" };
 

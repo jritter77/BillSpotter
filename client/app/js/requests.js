@@ -100,8 +100,28 @@ async function login(username, password) {
   let payload = { req: JSON.stringify({ username, password }) };
 
   let result = await $.post(endpoint, payload);
-  sessionStorage.setItem("user", result);
-  location.reload();
+
+  console.log(result);
+
+  if (!(result === "FAILURE")) {
+    sessionStorage.setItem("user", result);
+    location.reload();
+  }
+}
+
+async function verifyUser() {
+  let user = JSON.parse(sessionStorage.getItem("user"));
+  let endpoint = "../../server/users/verifyUser.php";
+  let payload = { req: JSON.stringify({ user: user }) };
+
+  let result = await $.post(endpoint, payload);
+
+  if (!result) {
+    sessionStorage.clear();
+    location.reload();
+  }
+
+  console.log(result);
 }
 
 export {
@@ -112,4 +132,5 @@ export {
   deleteBill,
   deletePayment,
   login,
+  verifyUser,
 };

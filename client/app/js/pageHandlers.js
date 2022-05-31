@@ -58,6 +58,10 @@ function init_common() {
   $(".back_button").click(() => {
     history.back();
   });
+
+  $('#nav_dropdown a[href="../splash/"]').click(() => {
+    sessionStorage.clear();
+  });
 }
 
 // initialize all pages

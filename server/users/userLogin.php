@@ -30,7 +30,7 @@ try {
         echo 'FAILURE';
     }
     else {
-        if (!$myArr[0]['password_hash'] == $req->password) {
+        if (!password_verify($req->password, $myArr[0]['password_hash'])) {
             echo 'FAILURE';
         }
         else {
@@ -40,7 +40,7 @@ try {
             $_SESSION['username'] = $myArr[0]['username'];
 
             // Send client side session variables
-            echo json_encode(['user_id'=>$_SESSION['user_id'], 'username'=>$_SESSION['username'], 'session_key'=>session_id()]);
+            echo json_encode(['user_id'=>$_SESSION['user_id'], 'username'=>$_SESSION['username']]);
         }
     }
 

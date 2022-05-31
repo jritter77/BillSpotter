@@ -1,44 +1,49 @@
 <?php
 
-try {
-    // Connect to database 
-    $db = new SQLite3('../../data/billSpotter.db');
+session_start();
 
-    // sqlite3 command to be executed
-    $stmt = $db->prepare("UPDATE bills SET
-        bill_name = :bill_name,
-        bill_freq = :bill_freq,
-        bill_type = :bill_type,
-        bill_amt_due = :bill_amt_due,
-        bill_due_date = :bill_due_date
-        where bill_id = :bill_id
-    ");
+try {
 
     // get parameters from request
     $req = json_decode($_POST['req']);
     $user = $req->user;
     $bill = $req->bill;
 
+    // Verify user is same as session user
+    if ($user->user_id == $_SESSION['user_id'] && $user->username == $_SESSION['username']) { 
+        
+        // Connect to database 
+        $db = new SQLite3('../../data/billSpotter.db');
 
-    // fill in parameters
-    $stmt->bindValue(':bill_id', $bill->bill_id);
-    $stmt->bindValue(':bill_name', $bill->bill_name);
-    $stmt->bindValue(':bill_freq', $bill->bill_freq);
-    $stmt->bindValue(':bill_type', $bill->bill_type);
-    $stmt->bindValue(':bill_amt_due', $bill->bill_amt_due);
-    $stmt->bindValue(':bill_due_date', $bill->bill_due_date);
+        // sqlite3 command to be executed
+        $stmt = $db->prepare("UPDATE bills SET
+            bill_name = :bill_name,
+            bill_freq = :bill_freq,
+            bill_type = :bill_type,
+            bill_amt_due = :bill_amt_due,
+            bill_due_date = :bill_due_date
+            where bill_id = :bill_id
+        ");
+
+        // fill in parameters
+        $stmt->bindValue(':bill_id', $bill->bill_id);
+        $stmt->bindValue(':bill_name', $bill->bill_name);
+        $stmt->bindValue(':bill_freq', $bill->bill_freq);
+        $stmt->bindValue(':bill_type', $bill->bill_type);
+        $stmt->bindValue(':bill_amt_due', $bill->bill_amt_due);
+        $stmt->bindValue(':bill_due_date', $bill->bill_due_date);
 
 
-
-
-
-    // Execute the sqlite3 command
-    if ($stmt->execute()) {
-        echo 'SUCCESS';
+        // Execute the sqlite3 command
+        if ($stmt->execute()) {
+            echo 'SUCCESS';
+        }
+        else {
+            throw new Exception($db->lastErrorMsg());
+        }
+    
     }
-    else {
-        throw new Exception($db->lastErrorMsg());
-    }
+    
 
 
 

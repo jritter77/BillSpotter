@@ -1,39 +1,49 @@
 <?php
 
+session_start();
+
 try {
-  // Connect to database 
-  $db = new SQLite3('../../data/billSpotter.db');
 
   // get params from request
   $req = json_decode($_GET['req']);
   $user = $req->user;
 
-  // sqlite3 command to be executed
-  $stmt = $db->prepare("SELECT * FROM bills WHERE user_id = :user_id");
 
-  // fill in parameters
-  $stmt->bindValue(':user_id', $user->user_id);
+  // Verify user is same as session user
+  if ($user->user_id == $_SESSION['user_id'] && $user->username == $_SESSION['username']) { 
+    
+    // Connect to database 
+    $db = new SQLite3('../../data/billSpotter.db');
+
+    // sqlite3 command to be executed
+    $stmt = $db->prepare("SELECT * FROM bills WHERE user_id = :user_id");
+
+    // fill in parameters
+    $stmt->bindValue(':user_id', $user->user_id);
 
 
-  $result = $stmt->execute();
+    $result = $stmt->execute();
 
-  if ($result) {
-    // extract data into array 
-    $myArr = array(); 
-    while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
-      array_push($myArr, $row);
+    if ($result) {
+      // extract data into array 
+      $myArr = array(); 
+      while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
+        array_push($myArr, $row);
+      }
+
+      // Return user instance 
+      echo json_encode($myArr);
+
+      $db->close();
+      unset($db);
+    }
+    else {
+        throw new Exception($db->lastErrorMsg());
     }
 
-    // Return user instance 
-    echo json_encode($myArr);
-
-    $db->close();
-    unset($db);
-  }
-  else {
-      throw new Exception($db->lastErrorMsg());
   }
 
+  
   
   
 } catch (Exception $e) {
