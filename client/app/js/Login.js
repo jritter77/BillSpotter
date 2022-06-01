@@ -33,7 +33,27 @@ function Login() {
     )
   );
 
+  setNavDropdown();
+
   return container;
 }
+
+const setNavDropdown = () => {
+  const dropdown = $("#nav_dropdown");
+
+  $("nav > a").attr("href", "../splash/index.html#home");
+
+  dropdown.html(`
+    <hr />
+    <li><a href="../splash/index.html#home">Home</a></li>
+    <li><a href="../splash/index.html#about">About</a></li>
+    <li><a href="../splash/index.html#features">Features</a></li>
+    <hr />
+    <li><a href="../signup/index.html">Sign Up</a></li>
+    <li><a href="#home">Login</a></li>
+    <hr />
+    <li><a href="#">Terms</a></li>
+  `);
+};
 
 export { Login };

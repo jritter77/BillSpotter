@@ -19,9 +19,7 @@ setTimeout(() => {
 async function startApp() {
   if (sessionStorage.getItem("user")) {
     await getBills();
-
     initNav();
-
     initAllPages();
   } else {
     $("#dashboard").hide();
