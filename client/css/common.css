@@ -125,6 +125,13 @@ hr {
 }
 
 
+.input_feedback {
+  display: none;
+  margin: 0;
+  font-weight: bold;
+  color: red;
+}
+
 
 .link_button {
   background: black;

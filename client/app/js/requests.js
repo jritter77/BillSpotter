@@ -107,6 +107,8 @@ async function login(username, password) {
     sessionStorage.setItem("user", result);
     location.reload();
   }
+
+  return result;
 }
 
 async function verifyUser() {

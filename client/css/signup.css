@@ -48,9 +48,4 @@ input:focus {
   border: 8px solid black;
 }
 
-form > p {
-  display: none;
-  margin: 0;
-  font-weight: bold;
-  color: red;
-}
+

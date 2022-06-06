@@ -51,10 +51,7 @@ function validateForm(username, password, confirmPass) {
   $("#confirm_pass").css("border-color", "black");
   $("#terms_pass").css("border-color", "black");
 
-  $("#username_feedback").css("display", "none");
-  $("#password_feedback").css("display", "none");
-  $("#confirm_pass_feedback").css("display", "none");
-  $("#terms_pass_feedback").css("display", "none");
+  $(".input_feedback").css("display", "none");
 
   if (!username) {
     $("#username").css("border-color", "red");

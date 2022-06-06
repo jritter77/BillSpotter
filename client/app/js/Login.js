@@ -12,23 +12,53 @@ function Login() {
   let username = $('<input id="user">');
   let password = $('<input id="pass" type="password">');
 
+  let username_feedback = $('<p class="input_feedback"></p>');
+  let password_feedback = $('<p class="input_feedback"></p>');
+
   let submit = $(`<input type="submit" value="Login">`);
 
-  submit.click((e) => {
+  submit.click(async (e) => {
     e.preventDefault();
 
     let user = username.val();
     let pass = password.val();
 
-    login(user, pass);
+    username.css("border-color", "black");
+    password.css("border-color", "black");
+
+    $(".input_feedback").css("display", "none");
+
+    if (!user) {
+      username.css("border-color", "red");
+      username_feedback
+        .css("display", "block")
+        .text("Please enter a username.");
+      return false;
+    }
+
+    if (!pass) {
+      password.css("border-color", "red");
+      password_feedback
+        .css("display", "block")
+        .text("Please enter a password.");
+      return false;
+    }
+
+    if ((await login(user, pass)) === "FAILURE") {
+      password.css("border-color", "red");
+      password_feedback.css("display", "block").text("Invalid Credentials");
+      return false;
+    }
   });
 
   container.append(
     form.append(
       `<label for"user">Username</label>`,
       username,
+      username_feedback,
       `<label for="pass">Password</label>`,
       password,
+      password_feedback,
       submit
     )
   );
