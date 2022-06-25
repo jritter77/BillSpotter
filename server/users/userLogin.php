@@ -27,7 +27,7 @@ try {
 
 
     if (!count($myArr)) {
-        echo 'FAILURE';
+        echo 'FAILURE here';
     }
     else {
         if (!password_verify($req->password, $myArr[0]['password_hash'])) {

@@ -12,7 +12,7 @@ try {
     $bill = $req->bill;
 
     // Verify user is same as session user
-    if ($user->user_id == $_SESSION['user_id'] && $user->username == $_SESSION['username']) {
+    //if ($user->user_id == $_SESSION['user_id'] && $user->username == $_SESSION['username']) {
        
        
         // Connect to database 
@@ -52,7 +52,7 @@ try {
         else {
             throw new Exception($db->lastErrorMsg());
         }
-    }
+    //}
 
 
     $db->close();

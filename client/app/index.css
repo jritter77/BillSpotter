@@ -1,0 +1,88 @@
+#app {
+    background-color: rgba(255, 255, 255, 0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#app > h1 {
+    width: 80%;
+    font-size: 7vw;
+}
+
+#background {
+    min-height: 100vh;
+    min-width: 100vw;
+    position: fixed;
+    z-index: -1;
+    background: linear-gradient(white 50%, var(--main-bg-color));
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20vh;
+}
+
+.collapsible {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 1s;
+}
+
+.collapsible.active {
+    max-height: 100vh;
+}
+
+html {
+    min-height: 100vh;
+    font-family: sans-serif;
+}
+
+
+
+hr {
+    width: 80%;
+}
+
+input {
+    border: 2px solid grey;
+}
+
+input:focus {
+    border: 2px solid black;
+}
+
+input.invalid {
+    border: 2px solid red;
+}
+
+input[type=number] {
+    text-align: right;
+}
+
+:root {
+    --main-bg-color: rgb(35, 199, 240);
+    --btn-primary-bg-color: black;
+    --btn-primary-color: white;
+    --btn-danger-bg-color: red;
+
+
+    font-size: 12px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+
+
+
+
+
+

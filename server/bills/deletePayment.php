@@ -10,7 +10,7 @@ try {
     $bill = $req->bill;
     
     // Verify user is same as session user
-    if ($user->user_id == $_SESSION['user_id'] && $user->username == $_SESSION['username']) { 
+    //if ($user->user_id == $_SESSION['user_id'] && $user->username == $_SESSION['username']) { 
         
         // Connect to database 
         $db = new SQLite3('../../data/billSpotter.db');
@@ -34,7 +34,7 @@ try {
         else {
             throw new Exception($db->lastErrorMsg());
         }
-    }
+    //}
 
     
 
