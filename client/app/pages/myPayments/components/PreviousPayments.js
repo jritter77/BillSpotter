@@ -1,5 +1,7 @@
 import { Bubble } from "../../../components/Bubble";
 import { Dialogue } from "../../../components/Dialogue";
+import { Toast } from "../../../components/Toast";
+import { Bills } from "../../../utility/Bills";
 
 const testBill = { bill_due_date: "01/01/01", bill_name: "test" };
 
@@ -8,14 +10,14 @@ const testBill = { bill_due_date: "01/01/01", bill_name: "test" };
  * @returns {Bubble} - Previous Payments component
  */
 
-const PreviousPayments = () => {
+const PreviousPayments = (bills) => {
   const container = $(`<div></div>`);
 
-  for (let i = 0; i < 3; i++) {
-    container.append(paidBill(testBill));
+  for (let bill of bills) {
+    container.append(paidBill(bill));
   }
 
-  return Bubble("Next Due Payments", container).css(bubbleStyle);
+  return Bubble("Previous Payments", container).css(bubbleStyle);
 };
 
 /** Paid Bill Component
@@ -24,16 +26,18 @@ const PreviousPayments = () => {
  * @returns {JQuery} - Paid Bill element
  */
 
-const paidBill = ({ bill_due_date, bill_name }) => {
+const paidBill = (bill) => {
   const row = $(`<div></div>`).css(paidBillStyle);
-  const date = $(`<p></p>`).text(bill_due_date);
-  const title = $(`<p></p>`).text(bill_name);
+  const date = $(`<p></p>`).text(bill.bill_due_date);
+  const title = $(`<p></p>`).text(bill.bill_name).css(titleStyle);
   const removeBtn = $(`<button>&#9746;</button>`).css(paidBtnStyle);
 
   removeBtn.click(() => {
     let confirmDialoge = Dialogue(
       "Are you sure you would like to remove this payment?",
-      () => {
+      async () => {
+        await Bills.deletePayment(bill);
+        Toast("Payment Deleted!");
         console.log("confirmed");
         confirmDialoge.remove();
       }
@@ -56,6 +60,13 @@ const paidBillStyle = {
   "align-items": "center",
   padding: "5%",
   "font-size": "5vw",
+};
+
+const titleStyle = {
+  overflow: "hidden",
+  "white-space": "nowrap",
+  "text-overflow": "ellipsis",
+  "max-width": "40%",
 };
 
 const paidBtnStyle = {

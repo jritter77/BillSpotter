@@ -1,5 +1,6 @@
 import { Dialogue } from "../../../components/Dialogue.js";
 import { Toast } from "../../../components/Toast.js";
+import { Bills } from "../../../utility/Bills.js";
 
 const testBill = {
   bill_id: 1,
@@ -14,15 +15,27 @@ const testBill = {
  *
  * @returns {JQuery} - Dropdowns element
  */
-const Dropdowns = () => {
-  let bills = [testBill, testBill, testBill];
+const Dropdowns = (bills) => {
   let dropdowns = $("<div></div>").css(dropdownContainerStyle);
 
   for (let bill of bills) {
     dropdowns.append(dropdown(bill));
   }
 
+  dropdowns.append(newBillBtn());
+
   return dropdowns;
+};
+
+const newBillBtn = () => {
+  const btn = $("<div></div>").css(dropdownStyle).css("margin-top", "10%");
+  const heading = $("<h1>+ New Bill</h1>").css(dueBillHeadingStyle);
+
+  btn.click(() => {
+    location.hash = "#editBill";
+  });
+
+  return btn.append(heading);
 };
 
 /** Dropdown Component
@@ -100,8 +113,8 @@ const dropdown = ({
   deleteBtn.click(() => {
     const confirm = Dialogue(
       "Are you sure you want to delete this bill?",
-      () => {
-        //TODO: add call to delete bill
+      async () => {
+        await Bills.deleteBill({ bill_id: bill_id });
         Toast("Bill Deleted!");
         confirm.remove();
       }

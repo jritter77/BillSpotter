@@ -1,5 +1,6 @@
 import { BackBtn } from "../../components/BackBtn.js";
 import { Bubble } from "../../components/Bubble.js";
+import { Bills } from "../../utility/Bills.js";
 import { PaymentForm } from "./components/paymentForm.js";
 
 const testBill = {
@@ -14,30 +15,48 @@ const testBill = {
 /** Edit Payment Component
  *
  */
-const EditPayment = () => {
+const EditPayment = async () => {
   const APP = $("#app");
 
   APP.html(`
           <h1>Edit Payment</h1>
   `);
 
-  let form = PaymentForm();
+  if (!sessionStorage.getItem("bills")) {
+    await Bills.getBills();
+  }
+
+  const bills = Bills.parseBills();
+
+  let bill;
+
+  let bill_id = location.hash.split("/")[1];
+  if (bill_id) {
+    for (let b of bills) {
+      if (b.bill_id === parseInt(bill_id)) {
+        bill = b;
+        break;
+      }
+    }
+  }
+
+  let form = PaymentForm(bill);
 
   let billNameGroup = $("<div></div>").css(groupStyle);
   let billNameHeader = $("<p>Date Due</p>").css(headerStyle);
-  let billName = $("<p></p>").text(testBill.bill_name);
+  let billName = $("<p></p>").text(bill.bill_name);
 
   let typeGroup = $("<div></div>").css(groupStyle);
   let typeHeader = $("<p>Type</p>").css(headerStyle);
-  let type = $("<p></p>").text(testBill.bill_type);
+  let type = $("<p></p>").text(bill.bill_type);
 
   let dueDateGroup = $("<div></div>").css(groupStyle);
   let dueDateHeader = $("<p>Date Due</p>").css(headerStyle);
-  let dueDate = $("<p></p>").text(testBill.bill_due_date);
+  let dueDate = $("<p></p>").text(bill.bill_due_date);
 
   let amtDueGroup = $("<div></div>").css(groupStyle);
   let amtDueHeader = $("<p>Date Due</p>").css(headerStyle);
-  let amtDue = $("<p></p>").text(testBill.bill_amt_due);
+  let amtDue = $("<p></p>").text(bill.bill_amt_due);
 
   let content = $("<div></div>").append(
     $('<div class="row"></div>').append(

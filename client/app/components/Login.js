@@ -1,3 +1,5 @@
+import { Bills } from "../utility/Bills.js";
+import { User } from "../utility/User.js";
 import { Bubble } from "./Bubble.js";
 import { createFields, Form, FormSubmit } from "./Form.js";
 
@@ -25,9 +27,11 @@ const loginForm = () => {
 
   const { Username: userField, Password: passField } = createFields(fields);
 
-  const submitBtn = FormSubmit("Login", () =>
-    validateForm(userField, passField)
-  );
+  const submitBtn = FormSubmit("Login", () => {
+    if (validateForm(userField, passField)) {
+      User.login(userField.input.val(), passField.input.val());
+    }
+  });
 
   form.append(userField.group, passField.group, submitBtn);
 
@@ -47,15 +51,21 @@ const validateForm = (userField, passField) => {
   userField.feedback.text("");
   passField.feedback.text("");
 
+  let result = true;
+
   if (!userField.input.val()) {
     userField.feedback.text("Please Enter a Username.");
     userField.input.addClass("invalid");
+    result = false;
   }
 
   if (!passField.input.val()) {
     passField.feedback.text("Please Enter a Password.");
     passField.input.addClass("invalid");
+    result = false;
   }
+
+  return result;
 };
 
 const loginStyle = {

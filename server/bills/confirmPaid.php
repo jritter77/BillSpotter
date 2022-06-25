@@ -2,6 +2,10 @@
 
 session_start();
 
+
+echo $_POST['req'];
+
+
 try {
 
     // get parameters from request
@@ -9,8 +13,9 @@ try {
     $user = $req->user;
     $bill = $req->bill;
 
+
     // Verify user is same as session user
-    if ($user->user_id == $_SESSION['user_id'] && $user->username == $_SESSION['username']) {
+    //if ($user->user_id == $_SESSION['user_id'] && $user->username == $_SESSION['username']) {
         
         // Connect to database 
         $db = new SQLite3('../../data/billSpotter.db');
@@ -39,7 +44,7 @@ try {
             throw new Exception($db->lastErrorMsg());
         }
 
-    }
+    //}
 
 
     $db->close();

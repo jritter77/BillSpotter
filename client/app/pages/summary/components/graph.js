@@ -12,9 +12,7 @@ const testBill = {
 };
 
 // Graph component
-const Graph = () => {
-  let bills = [testBill, testBill, testBill];
-
+const Graph = (bills, payments) => {
   const container = $("<div></div>").css(containerStyle);
   const graph = $("<div></div>").css(graphStyle);
   const barContainer = $("<div></div>").css(barContainerStyle);
@@ -22,10 +20,12 @@ const Graph = () => {
   const xAxis = $("<div></div>").css(xAxisStyle);
   const north = $('<div class="row"></div>').css(northStyle);
 
-  const catTotals = Bills.getCatTotals(bills);
+  const catTotals = Bills.getCatTotals([...bills, ...payments]);
 
   const min = $("<p></p>").text(0).css({ margin: 0 });
-  const max = $("<p></p>").text(Bills.getCatMax(catTotals)).css({ margin: 0 });
+  const max = $("<p></p>")
+    .text(Bills.getCatMax(catTotals) * 1.2)
+    .css({ margin: 0 });
 
   container.append(
     north.append(yAxis.append(max, min), graph.append(barContainer)),
@@ -38,12 +38,14 @@ const Graph = () => {
     graph.append(scale);
   }
 
-  for (let bill of bills) {
-    xAxis.append($("<span></span>").text(bill.bill_type).css(labelStyle));
+  for (let cat in catTotals) {
+    xAxis.append($("<span></span>").text(cat).css(labelStyle));
     barContainer.append(
       barGroup([
-        (bill.bill_amt_due / max.text()) * 100,
-        bill.bill_amt_paid ? (bill.bill_amt_paid / max.text()) * 100 : 0,
+        (catTotals[cat].total_due / max.text()) * 100,
+        catTotals[cat].total_paid
+          ? (catTotals[cat].total_paid / max.text()) * 100
+          : 0,
       ])
     );
   }

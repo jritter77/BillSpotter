@@ -1,6 +1,7 @@
 import { Dialogue } from "../../../components/Dialogue.js";
 import { createFields, Form, FormSubmit } from "../../../components/Form.js";
 import { Toast } from "../../../components/Toast.js";
+import { Bills } from "../../../utility/Bills.js";
 
 // Form Field definitions
 const fields = [
@@ -20,7 +21,7 @@ const fields = [
  * @returns {Form}
  */
 
-const BillForm = () => {
+const BillForm = (bill) => {
   const form = Form();
 
   const {
@@ -31,12 +32,38 @@ const BillForm = () => {
     "Amount Due": amtField,
   } = createFields(fields);
 
+  if (bill) {
+    nameField.input.val(bill.bill_name);
+    typeField.input[0].value = bill.bill_type;
+    freqField.input[0].value = bill.bill_freq;
+    dateField.input.val(bill.bill_due_date);
+    amtField.input.val(bill.bill_amt_due);
+  }
+
   const submitBtn = FormSubmit("Save Changes", () => {
     let result = validateForm(nameField, dateField, amtField);
     if (result) {
       let dialogue = Dialogue(
         "Are you sure you would like to ave these changes?",
-        () => {
+        async () => {
+          if (bill) {
+            bill.bill_name = nameField.input.val();
+            bill.bill_type = typeField.input.val();
+            bill.bill_freq = freqField.input.val();
+            bill.bill_due_date = dateField.input.val();
+            bill.bill_amt_due = amtField.input.val();
+            await Bills.editBill(bill.bill_id, bill);
+          } else {
+            let newBill = {
+              bill_name: nameField.input.val(),
+              bill_freq: freqField.input.val(),
+              bill_type: typeField.input.val(),
+              bill_amt_due: amtField.input.val(),
+              bill_due_date: dateField.input.val(),
+            };
+            await Bills.newBill(newBill);
+          }
+
           Toast("Bill changes saved successfully!");
           dialogue.remove();
           location.hash = "#bills";

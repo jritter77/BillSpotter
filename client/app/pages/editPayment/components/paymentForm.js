@@ -1,6 +1,8 @@
 import { Dialogue } from "../../../components/Dialogue.js";
 import { createFields, Form, FormSubmit } from "../../../components/Form.js";
 import { Toast } from "../../../components/Toast.js";
+import { Bills } from "../../../utility/Bills.js";
+import { BillForm } from "../../editBill/components/billForm.js";
 
 // Form Field definitions
 const fields = [
@@ -31,7 +33,7 @@ const fields = [
  * @returns {Form}
  */
 
-const PaymentForm = () => {
+const PaymentForm = (bill) => {
   const form = Form();
 
   // Create and destruct fields
@@ -54,6 +56,11 @@ const PaymentForm = () => {
   otherDateField.label.css("display", "none");
   otherAmtField.label.css("display", "none");
 
+  let date = new Date();
+  otherDateField.input[0].value = date.toLocaleString("en-CA").split(",")[0];
+
+  otherAmtField.input.val(bill.bill_amt_due);
+
   // Only enable optional inputs on radio change
   datePaidField.group.find("input[type=radio]").on("change", () => {
     otherDateField.input.prop(
@@ -71,7 +78,11 @@ const PaymentForm = () => {
   });
 
   // Set submission handler
-  const submitBtn = FormSubmit("Confirm Payment", submissionHandler);
+  const submitBtn = FormSubmit("Confirm Payment", () => {
+    bill.bill_date_paid = otherDateField.input.val();
+    bill.bill_amt_paid = otherAmtField.input.val();
+    submissionHandler(bill);
+  });
 
   form.append(
     $('<div class="row"></div>').append(
@@ -85,10 +96,11 @@ const PaymentForm = () => {
 };
 
 // Submission handler
-const submissionHandler = () => {
+const submissionHandler = (bill) => {
   let confirm = Dialogue(
     "Mark this bill as paid with current information?",
     () => {
+      Bills.confirmPaid(bill);
       Toast("Payment information saved!");
       confirm.remove();
       location.hash = "#payments";

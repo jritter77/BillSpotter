@@ -7,11 +7,11 @@ const testBill = { bill_due_date: "01/01/01", bill_name: "test" };
  * @returns {Bubble} - DuePayments Component
  */
 
-const DuePayments = () => {
+const DuePayments = (bills) => {
   const container = $(`<div></div>`);
 
-  for (let i = 0; i < 3; i++) {
-    container.append(dueBill(testBill));
+  for (let bill of bills) {
+    container.append(dueBill(bill));
   }
 
   return Bubble("Next Due Payments", container).css(bubbleStyle);
@@ -23,14 +23,14 @@ const DuePayments = () => {
  * @returns {JQuery} - due bill element
  */
 
-const dueBill = ({ bill_due_date, bill_name }) => {
+const dueBill = (bill) => {
   const row = $(`<div></div>`).css(dueBillStyle);
-  const date = $(`<p></p>`).text(bill_due_date);
-  const title = $(`<p></p>`).text(bill_name);
+  const date = $(`<p></p>`).text(bill.bill_due_date);
+  const title = $(`<p></p>`).text(bill.bill_name).css(titleStyle);
   const paidBtn = $(`<button>&#9745;</button>`).css(paidBtnStyle);
 
   paidBtn.click(() => {
-    location.hash = "#editPayment";
+    location.hash = "#editPayment/" + bill.bill_id;
   });
 
   row.append(date, title, paidBtn);
@@ -48,6 +48,13 @@ const dueBillStyle = {
   "align-items": "center",
   padding: "5%",
   "font-size": "5vw",
+};
+
+const titleStyle = {
+  overflow: "hidden",
+  "white-space": "nowrap",
+  "text-overflow": "ellipsis",
+  "max-width": "40%",
 };
 
 const paidBtnStyle = {

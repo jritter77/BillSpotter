@@ -12,12 +12,10 @@ const testBill = {
   bill_date_paid: null,
 };
 
-const Totals = () => {
+const Totals = (bills, payments) => {
   const container = $("<div></div>");
 
-  const bills = [testBill, testBill, testBill];
-
-  const catTotals = Bills.getCatTotals(bills);
+  const catTotals = Bills.getCatTotals([...bills, ...payments]);
 
   let totalDue = 0;
   let toatalPaid = 0;
