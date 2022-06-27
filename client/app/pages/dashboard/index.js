@@ -12,10 +12,15 @@ const Dashboard = async () => {
     await Bills.getBills();
   }
 
+  if (!sessionStorage.getItem("payments")) {
+    await Bills.getPayments();
+  }
+
   const bills = Bills.parseBills();
+  const payments = Bills.parsePayments();
 
   const heading = $(`<h1>Dashboard</h1>`);
-  const cal = Bubble("Calendar", Calendar());
+  const cal = Bubble("Calendar", Calendar([...bills, ...payments]));
   const shortcuts = Shortcuts();
   const nextDue = NextDue(bills);
   APP.append(heading, cal, shortcuts, nextDue);

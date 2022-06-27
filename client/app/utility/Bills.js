@@ -81,6 +81,19 @@ class Bills {
     console.log(result);
   }
 
+  // grabs input from edit_bill_form and sends a request to create a new bill in the db
+  static advanceBill(bill) {
+    let date = new Date(bill.bill_due_date);
+
+    if (bill.bill_freq === "Monthly") {
+      date.setMonth(date.getMonth() + 1);
+    }
+
+    bill.bill_due_date = date.toLocaleDateString("en-CA").split(",")[0];
+
+    return bill;
+  }
+
   // grabs input from edit_bill_form and sends a request to update bill in db
   static async editBill(bill_id, bill) {
     bill.bill_id = bill_id;
@@ -116,12 +129,47 @@ class Bills {
     let payload = { req: JSON.stringify({ user: user, bill: bill }) };
 
     let result = await $.post(endpoint, payload);
+
+    let newBill = Bills.advanceBill(bill);
+
+    let query = await Bills.queryBill({
+      bill_name: newBill.bill_name,
+    });
+
+    console.log(query);
+
+    if (!(query[query.length - 1].bill_id > bill.bill_id)) {
+      await Bills.newBill(newBill);
+    }
+
     await Bills.getBills();
     await Bills.getPayments();
 
     MyPayments();
 
     console.log(result);
+  }
+
+  // grabs information from payment_form and sends a request update the date paid and amt paid of bill
+  static async queryBill(bill) {
+    let user = JSON.parse(sessionStorage.getItem("user"));
+    let queryBill = {
+      bill_id: null,
+      bill_name: null,
+      bill_freq: null,
+      bill_type: null,
+      bill_amt_due: null,
+      bill_due_date: null,
+      bill_date_paid: null,
+      bill_amt_paid: null,
+    };
+    Object.assign(queryBill, bill);
+    let endpoint = "../../server/bills/queryBill.php";
+    let payload = { req: JSON.stringify({ user: user, bill: queryBill }) };
+
+    let result = await $.post(endpoint, payload);
+
+    return JSON.parse(result);
   }
 
   // sets the date paid and amt paid of bill to NULL

@@ -7,7 +7,6 @@ import { EditBill } from "./pages/editBill/index.js";
 import { EditPayment } from "./pages/editPayment/index.js";
 import { Summary } from "./pages/summary/index.js";
 import { Login } from "./components/Login.js";
-import { Bills } from "./utility/Bills.js";
 
 //! FOR TESTING ONLY
 sessionStorage.setItem(
