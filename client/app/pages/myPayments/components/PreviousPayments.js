@@ -1,5 +1,6 @@
 import { Bubble } from "../../../components/Bubble.js";
 import { Dialogue } from "../../../components/Dialogue.js";
+import { PlaceHolder } from "../../../components/PlaceHolder.js";
 import { Toast } from "../../../components/Toast.js";
 import { Bills } from "../../../utility/Bills.js";
 
@@ -13,8 +14,14 @@ const testBill = { bill_due_date: "01/01/01", bill_name: "test" };
 const PreviousPayments = (bills) => {
   const container = $(`<div></div>`);
 
-  for (let bill of bills) {
-    container.append(paidBill(bill));
+  if (!bills.length) {
+    container.append(
+      PlaceHolder(`You do not currently have any previous payments to display.`)
+    );
+  } else {
+    for (let bill of bills) {
+      container.append(paidBill(bill));
+    }
   }
 
   return Bubble("Previous Payments", container).css(bubbleStyle);
@@ -28,7 +35,7 @@ const PreviousPayments = (bills) => {
 
 const paidBill = (bill) => {
   const row = $(`<div></div>`).css(paidBillStyle);
-  const date = $(`<p></p>`).text(bill.bill_due_date);
+  const date = $(`<p></p>`).text(bill.bill_date_paid);
   const title = $(`<p></p>`).text(bill.bill_name).css(titleStyle);
   const removeBtn = $(`<button>&#9746;</button>`).css(paidBtnStyle);
 

@@ -101,6 +101,7 @@ const dropdownMenuStyle = `
   right: 0;
   font-size: 7vw;
   padding: 0 16px;
+  z-index: 1;
 `;
 
 const dropdownItemStyle = `

@@ -10,7 +10,7 @@ const fields = [
   {
     label: "Frequency",
     type: "select",
-    options: ["Weekly", "Monthly", "Yearly"],
+    options: ["Monthly", "Weekly", "Yearly"],
   },
   { label: "Date Due", type: "date" },
   { label: "Amount Due", type: "number" },

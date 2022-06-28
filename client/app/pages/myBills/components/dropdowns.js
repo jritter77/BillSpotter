@@ -1,4 +1,6 @@
+import { Bubble } from "../../../components/Bubble.js";
 import { Dialogue } from "../../../components/Dialogue.js";
+import { PlaceHolder } from "../../../components/PlaceHolder.js";
 import { Toast } from "../../../components/Toast.js";
 import { Bills } from "../../../utility/Bills.js";
 
@@ -18,18 +20,29 @@ const testBill = {
 const Dropdowns = (bills) => {
   let dropdowns = $("<div></div>").css(dropdownContainerStyle);
 
-  for (let bill of bills) {
-    dropdowns.append(dropdown(bill));
-  }
-
   dropdowns.append(newBillBtn());
+
+  if (!bills.length) {
+    dropdowns.append(
+      Bubble(
+        "My Bills",
+        PlaceHolder(
+          `You do not currently have any bills to display. Create a new bill using the "New Bill" button above.`
+        )
+      )
+    );
+  } else {
+    for (let bill of bills) {
+      dropdowns.append(dropdown(bill));
+    }
+  }
 
   return dropdowns;
 };
 
 const newBillBtn = () => {
-  const btn = $("<div></div>").css(dropdownStyle).css("margin-top", "10%");
-  const heading = $("<h1>+ New Bill</h1>").css(dueBillHeadingStyle);
+  const btn = $("<div></div>").css(dropdownStyle).css("margin-bottom", "10%");
+  const heading = $("<h1>New Bill</h1>").css(dueBillHeadingStyle);
 
   btn.click(() => {
     location.hash = "#editBill";
@@ -54,6 +67,8 @@ const dropdown = ({
   let container = $("<div></div>").css(dropdownStyle);
 
   let heading = $("<h1></h1>").text(bill_name).css(dueBillHeadingStyle);
+  let symbol = $("<p></p>").text("+").css(symbolStyle);
+  let headerGroup = $("<div></div>").css(headerGroupStyle);
 
   let collapsible = $(`<div class='collapsible'></div>`).css(collapsibleStyle);
 
@@ -81,7 +96,7 @@ const dropdown = ({
   let deleteBtn = $("<button>Delete Bill</button>").css(btnStyle);
 
   container.append(
-    heading,
+    headerGroup.append(heading, symbol),
     collapsible.append(
       $('<div class="row"></div>').append(
         dueDateGroup.append(dueDateHeader, dueDate),
@@ -96,12 +111,14 @@ const dropdown = ({
     )
   );
 
-  heading.click((e) => {
+  headerGroup.click((e) => {
     collapsible.toggleClass("active");
+
+    symbol.text(symbol.text() === "+" ? "-" : "+");
 
     for (let c of [...$(".collapsible.active")]) {
       if (c !== collapsible[0]) {
-        $(c).removeClass("active");
+        $(c).removeClass("active").trigger("compress_dropdown");
       }
     }
   });
@@ -120,6 +137,10 @@ const dropdown = ({
       }
     );
     $("body").prepend(confirm);
+  });
+
+  container.on("compress_dropdown", () => {
+    symbol.text("+");
   });
 
   return container;
@@ -168,8 +189,20 @@ const groupStyle = {
   flex: 1,
 };
 
+const headerGroupStyle = {
+  display: "flex",
+  "justify-content": "space-between",
+};
+
 const headerStyle = {
   "text-decoration": "underline",
+};
+
+const symbolStyle = {
+  "font-size": "8vw",
+  color: "white",
+  margin: 0,
+  padding: "5%",
 };
 
 export { Dropdowns };

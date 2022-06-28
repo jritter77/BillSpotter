@@ -1,4 +1,5 @@
 import { Bubble } from "../../../components/Bubble.js";
+import { PlaceHolder } from "../../../components/PlaceHolder.js";
 
 const testBill = { bill_due_date: "01/01/01", bill_name: "test" };
 
@@ -10,6 +11,16 @@ const testBill = { bill_due_date: "01/01/01", bill_name: "test" };
 const DuePayments = (bills) => {
   const container = $(`<div></div>`);
 
+  if (!bills.length) {
+    container.append(
+      PlaceHolder(
+        `You do not currently have any due payments to display. 
+        <br>
+        <br>
+        Create a new bill using the "My Bills" section.`
+      )
+    );
+  }
   for (let bill of bills) {
     container.append(dueBill(bill));
   }
