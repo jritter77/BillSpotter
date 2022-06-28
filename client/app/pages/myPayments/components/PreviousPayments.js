@@ -1,7 +1,7 @@
-import { Bubble } from "../../../components/Bubble";
-import { Dialogue } from "../../../components/Dialogue";
-import { Toast } from "../../../components/Toast";
-import { Bills } from "../../../utility/Bills";
+import { Bubble } from "../../../components/Bubble.js";
+import { Dialogue } from "../../../components/Dialogue.js";
+import { Toast } from "../../../components/Toast.js";
+import { Bills } from "../../../utility/Bills.js";
 
 const testBill = { bill_due_date: "01/01/01", bill_name: "test" };
 

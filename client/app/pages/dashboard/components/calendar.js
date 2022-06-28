@@ -1,4 +1,4 @@
-import { Tooltip } from "../../../components/tooltip.js";
+import { Tooltip } from "../../../components/Tooltip.js";
 
 const testBill = {
   bill_name: "test",
