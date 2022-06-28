@@ -87,6 +87,11 @@ class Bills {
 
     if (bill.bill_freq === "Monthly") {
       date.setMonth(date.getMonth() + 1);
+      date.setDate(date.getDate() + 1);
+    } else if (bill.bill_freq === "Weekly") {
+      date.setDate(date.getDate() + 8);
+    } else if (bill.bill_freq === "Annually") {
+      date.setFullYear(date.getFullYear() + 1);
     }
 
     bill.bill_due_date = date.toLocaleDateString("en-CA").split(",")[0];

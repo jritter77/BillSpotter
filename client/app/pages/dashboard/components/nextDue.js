@@ -1,4 +1,4 @@
-import { Bubble } from "../../../components/Bubble";
+import { Bubble } from "../../../components/Bubble.js";
 
 const testBill = { bill_due_date: "01/01/01", bill_name: "test" };
 
