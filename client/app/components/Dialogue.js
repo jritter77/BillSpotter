@@ -1,4 +1,4 @@
-import { Bubble } from "./Bubble";
+import { Bubble } from "./Bubble.js";
 
 /**
  * Dialog Component
