@@ -47,7 +47,9 @@ if (!location.hash) {
 }
 
 // initial call to load content
-$(window).ready(loadContent());
+$(window).ready(() => {
+  loadContent();
 
-// add event listener for hash
-window.addEventListener("hashchange", loadContent);
+  // add event listener for hash
+  window.addEventListener("hashchange", loadContent);
+});
