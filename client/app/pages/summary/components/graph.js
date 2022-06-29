@@ -20,11 +20,11 @@ const Graph = (bills, payments) => {
   const xAxis = $("<div></div>").css(xAxisStyle);
   const north = $('<div class="row"></div>').css(northStyle);
 
-  const catTotals = Bills.getCatTotals([...bills, ...payments]);
+  const catTotals = Bills.getMonthTotals([...bills, ...payments]);
 
   const min = $("<p></p>").text(0).css({ margin: 0 });
   const max = $("<p></p>")
-    .text(Bills.getCatMax(catTotals) * 1.2)
+    .text(Math.ceil((Bills.getCatMax(catTotals) * 1.1) / 100) * 100)
     .css({ margin: 0 });
 
   container.append(

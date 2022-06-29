@@ -23,6 +23,30 @@ class Bills {
     return cats;
   }
 
+  static getMonthTotals(bills) {
+    let monthProjected = Bills.projectMonthBills(bills);
+
+    let date = new Date();
+    let month = date.getMonth() + 1;
+
+    console.log(month);
+
+    let monthBills = [];
+
+    // filter bills to only include month bills
+    for (let bill of bills) {
+      console.log(bill.bill_due_date);
+      if (parseInt(bill.bill_due_date.split("-")[1]) === month) {
+        monthBills.push(bill);
+      }
+    }
+
+    console.log(monthBills);
+
+    // run filterered bills through getCatTotals and return result
+    return Bills.getCatTotals([...monthBills, ...monthProjected]);
+  }
+
   // return max of categories
   static getCatMax(totals) {
     let max = 0;
@@ -81,22 +105,26 @@ class Bills {
     console.log(result);
   }
 
-  // grabs input from edit_bill_form and sends a request to create a new bill in the db
+  // advances the bill_date by one cycle and returns the new bill
   static advanceBill(bill) {
     let date = new Date(bill.bill_due_date);
 
-    if (bill.bill_freq === "Monthly") {
+    let newBill = { ...bill };
+
+    if (newBill.bill_freq === "Monthly") {
       date.setMonth(date.getMonth() + 1);
       date.setDate(date.getDate() + 1);
-    } else if (bill.bill_freq === "Weekly") {
+    } else if (newBill.bill_freq === "Weekly") {
       date.setDate(date.getDate() + 8);
-    } else if (bill.bill_freq === "Annually") {
+    } else if (newBill.bill_freq === "Annually") {
       date.setFullYear(date.getFullYear() + 1);
     }
 
-    bill.bill_due_date = date.toLocaleDateString("en-CA").split(",")[0];
+    newBill.bill_due_date = date.toLocaleDateString("en-CA").split(",")[0];
+    newBill.bill_date_paid = null;
+    newBill.bill_amt_paid = null;
 
-    return bill;
+    return newBill;
   }
 
   // grabs input from edit_bill_form and sends a request to update bill in db
@@ -175,6 +203,27 @@ class Bills {
     let result = await $.post(endpoint, payload);
 
     return JSON.parse(result);
+  }
+
+  static projectMonthBills(bills) {
+    let date = new Date();
+    let month = date.getMonth + 1;
+
+    let projected = [];
+
+    for (let bill of bills) {
+      let nextBill = Bills.advanceBill(bill);
+      let nextBillMonth = parseInt(nextBill.bill_due_date.split("-")[1]);
+
+      while (nextBillMonth <= month) {
+        projected.push(nextBill);
+
+        nextBill = Bills.advanceBill(bill);
+        nextBillMonth = parseInt(nextBill.bill_due_date.split("-")[1]);
+      }
+    }
+
+    return projected;
   }
 
   // sets the date paid and amt paid of bill to NULL

@@ -15,7 +15,7 @@ const testBill = {
 const Totals = (bills, payments) => {
   const container = $("<div></div>");
 
-  const catTotals = Bills.getCatTotals([...bills, ...payments]);
+  const catTotals = Bills.getMonthTotals([...bills, ...payments]);
 
   let totalDue = 0;
   let toatalPaid = 0;
