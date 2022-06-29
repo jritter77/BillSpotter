@@ -23,6 +23,7 @@ class Bills {
     return cats;
   }
 
+  // Returns totals of all categories for the current month
   static getMonthTotals(bills) {
     let monthProjected = Bills.projectMonthBills(bills);
 
