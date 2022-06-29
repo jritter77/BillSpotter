@@ -7,6 +7,7 @@ import { Shortcuts } from "./components/shortcuts.js";
 const Dashboard = async () => {
   const APP = $("#app");
   APP.html("");
+  console.log("fired!");
 
   if (!sessionStorage.getItem("bills")) {
     await Bills.getBills();
