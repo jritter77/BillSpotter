@@ -19,8 +19,6 @@ const Summary = async () => {
   const bills = Bills.parseBills();
   const payments = Bills.parsePayments();
 
-  console.log(bills, payments);
-
   let date = new Date();
   let graphHeader =
     date.toLocaleString("default", { month: "long" }) +

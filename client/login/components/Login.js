@@ -1,7 +1,6 @@
-import { Bills } from "../utility/Bills.js";
-import { User } from "../utility/User.js";
-import { Bubble } from "./Bubble.js";
-import { createFields, Form, FormSubmit } from "./Form.js";
+import { User } from "../../app/utility/User.js";
+import { Bubble } from "../../app/components/Bubble.js";
+import { createFields, Form, FormSubmit } from "../../app/components/Form.js";
 
 /** Login Component
  *
@@ -27,9 +26,16 @@ const loginForm = () => {
 
   const { Username: userField, Password: passField } = createFields(fields);
 
-  const submitBtn = FormSubmit("Login", () => {
+  const submitBtn = FormSubmit("Login", async () => {
     if (validateForm(userField, passField)) {
-      User.login(userField.input.val(), passField.input.val());
+      let result = await User.login(
+        userField.input.val(),
+        passField.input.val()
+      );
+
+      if (result !== "FAILURE") {
+        location.replace(location.toString().replace("login", "app"));
+      }
     }
   });
 

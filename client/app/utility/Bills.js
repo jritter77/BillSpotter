@@ -30,13 +30,10 @@ class Bills {
     let date = new Date();
     let month = date.getMonth() + 1;
 
-    console.log(month);
-
     let monthBills = [];
 
     // filter bills to only include month bills
     for (let bill of bills) {
-      console.log(bill.bill_due_date);
       if (parseInt(bill.bill_due_date.split("-")[1]) === month) {
         monthBills.push(bill);
       }

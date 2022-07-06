@@ -64,6 +64,63 @@ input[type=number] {
     text-align: right;
 }
 
+nav {
+    background: black;
+    display: flex;
+    padding: 2%;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+}
+
+nav img {
+    width: 15vw;
+}
+
+
+
+nav a.heading {
+    display: block;
+    font-size: 10vw;
+    color: white;
+    text-align: center;
+    text-decoration: underline;
+}
+
+nav span {
+    color: var(--main-bg-color);
+    text-decoration: none;
+}
+
+.navDropdownBtn {
+    border: 1vw solid white;
+    border-radius: 15%;
+    font-size: 7vw;
+    min-width: 10vw;
+    padding: 0 2%;
+    color: white;
+    background: black;
+}
+
+.navDropdownMenu {
+    position: absolute;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 100%;
+    right: 0;
+    font-size: 7vw;
+    padding: 0 16px;
+    z-index: 1;
+}
+
+.navDropdownItem {
+    margin: 5%;
+    color: black;
+    text-decoration: none;
+}
+
 :root {
     --main-bg-color: rgb(35, 199, 240);
     --btn-primary-bg-color: black;

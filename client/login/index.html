@@ -14,7 +14,7 @@
 
     <link rel="icon" href="/images/logo.png" />
 
-    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="../app/index.css" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   </head>
@@ -25,23 +25,22 @@
         <img src="../images/logo.svg" alt="Binoculars" />
         <a href="#dashboard" class="heading"> <span>Bill</span>Spotter </a>
         <button class="navDropdownBtn">&#9776</button>
-        <div class="collapsible navDropdownMenu">
-          <hr>
-          <a class="navDropdownItem" href="#dashboard">Home</a>
-          <a class="navDropdownItem" href="#bills">My&nbsp;Bills</a>
-          <a class="navDropdownItem" href="#payments">My&nbsp;Payments</a>
-          <a class="navDropdownItem" href="#summary">Month&nbsp;Summary</a>
-          <hr>
-          <a class="navDropdownItem" href="#faq">FAQ</a>
-          <a class="navDropdownItem" href="#support">Support</a>
-          <hr>
-          <a id="logout" class="navDropdownItem" href="../splash/">Logout</a>
-          <hr>
-        </div>
+        <div class="navDropdownMenu collapsible">
+            <hr>
+            <a class="navDropdownItem" href="../splash/">About</a>
+            <a class="navDropdownItem" href="../signup/">Sign&nbsp;Up</a>
+            <a class="navDropdownItem" href="../login/">Login</a>
+            <hr>
+            <a class="navDropdownItem" href="#faq">FAQ</a>
+            <a class="navDropdownItem" href="#terms">Terms</a>
+            <hr>
+          </div>
       </nav>
     </header>
     <div id="background"></div>
-    <div id="app"></div>
+    <div id="app">
+      <h1>Login</h1>
+    </div>
 
     <script type="module" src="./index.js"></script>
   </body>

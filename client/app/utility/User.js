@@ -1,4 +1,15 @@
 class User {
+  static async newUser(username, password) {
+    let endpoint = "../../server/users/newUser.php";
+    let payload = { req: JSON.stringify({ username, password }) };
+
+    let result = await $.post(endpoint, payload);
+
+    console.log(result);
+
+    return result;
+  }
+
   static async login(username, password) {
     let endpoint = "../../server/users/userLogin.php";
     let payload = { req: JSON.stringify({ username, password }) };
@@ -9,7 +20,6 @@ class User {
 
     if (!(result === "FAILURE")) {
       sessionStorage.setItem("user", result);
-      location.reload();
     }
 
     return result;
