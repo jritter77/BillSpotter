@@ -43,7 +43,7 @@ const EditPayment = async () => {
   let form = PaymentForm(bill);
 
   let billNameGroup = $("<div></div>").css(groupStyle);
-  let billNameHeader = $("<p>Date Due</p>").css(headerStyle);
+  let billNameHeader = $("<p>Bill Name</p>").css(headerStyle);
   let billName = $("<p></p>").text(bill.bill_name);
 
   let typeGroup = $("<div></div>").css(groupStyle);
@@ -55,8 +55,8 @@ const EditPayment = async () => {
   let dueDate = $("<p></p>").text(bill.bill_due_date);
 
   let amtDueGroup = $("<div></div>").css(groupStyle);
-  let amtDueHeader = $("<p>Date Due</p>").css(headerStyle);
-  let amtDue = $("<p></p>").text(bill.bill_amt_due);
+  let amtDueHeader = $("<p>Amount Due</p>").css(headerStyle);
+  let amtDue = $("<p class='dollar'></p>").text(bill.bill_amt_due);
 
   let content = $("<div></div>").append(
     $('<div class="row"></div>').append(

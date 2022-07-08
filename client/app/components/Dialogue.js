@@ -47,7 +47,7 @@ const containerStyle = {
 };
 
 const dialogueStyle = {
-  "margin-top": "40%",
+  "margin-top": "20vh",
 };
 
 const textStyle = {
@@ -66,7 +66,7 @@ const btnStyle = {
   padding: 0,
   margin: 0,
   width: "20%",
-  "font-size": "10vw",
+  "font-size": "var(--mg-font-size)",
   "font-weight": "bold",
   background: "black",
   color: "white",

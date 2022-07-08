@@ -16,7 +16,7 @@ try {
     $db = new SQLite3('../../data/billSpotter.db');
 
     // sqlite3 command to be executed
-    $stmt = $db->prepare("SELECT * FROM bills WHERE user_id = :user_id AND bill_date_paid IS NULL");
+    $stmt = $db->prepare("SELECT * FROM bills WHERE user_id = :user_id AND bill_date_paid IS NULL ORDER BY bill_due_date");
 
     // fill in parameters
     $stmt->bindValue(':user_id', $user->user_id);

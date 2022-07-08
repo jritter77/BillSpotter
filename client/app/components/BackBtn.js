@@ -19,13 +19,13 @@ const BackBtn = (loc) => {
 
 const btnStyle = {
   background: "black",
-  "font-size": "8vw",
+  "font-size": "var(--xl-font-size)",
   color: "white",
   "border-radius": "25%",
   position: "fixed",
   bottom: "5vh",
   right: "5vw",
-  padding: "5%",
+  padding: "var(--xs-font-size)",
   opacity: 0.5,
 };
 

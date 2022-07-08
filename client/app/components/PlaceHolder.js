@@ -3,7 +3,7 @@ const PlaceHolder = (text) => {
 };
 
 const placeHolderStyle = {
-  "font-size": "5vw",
+  "font-size": "var(--md-font-size)",
   padding: "10%",
   "text-align": "center",
 };

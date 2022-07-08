@@ -7,13 +7,16 @@ const testBill = { bill_due_date: "01/01/01", bill_name: "test" };
 const NextDue = (bills) => {
   const container = $(`<div></div>`);
 
+  let date = new Date();
+
+  bills = bills.filter(
+    (bill) => parseInt(bill.bill_due_date.split("-")[1]) === date.getMonth() + 1
+  );
+
   if (!bills.length) {
     container.append(
       PlaceHolder(
-        `You do not currently have any due payments to display. 
-        <br>
-        <br>
-        Create a new bill using the "My Bills" section.`
+        `You do not currently have any due payments to display for the current month.`
       )
     );
   }
@@ -21,7 +24,7 @@ const NextDue = (bills) => {
     container.append(dueBill(bill));
   }
 
-  return Bubble("Next Due Payments", container).css(bubbleStyle);
+  return Bubble("Payments Due This Month", container).css(bubbleStyle);
 };
 
 // Creates and returns a dueBill element
@@ -40,16 +43,14 @@ const dueBill = (bill) => {
   return row;
 };
 
-const bubbleStyle = {
-  "margin-top": "5%",
-};
+const bubbleStyle = {};
 
 const dueBillStyle = {
   display: "flex",
   "justify-content": "space-between",
   "align-items": "center",
   padding: "5%",
-  "font-size": "5vw",
+  "font-size": "var(--md-font-size)",
 };
 
 const titleStyle = {
@@ -63,7 +64,7 @@ const paidBtnStyle = {
   padding: 0,
   margin: 0,
   width: "20%",
-  "font-size": "10vw",
+  "font-size": "var(--mg-font-size)",
   "font-weight": "bold",
   background: "black",
   color: "white",

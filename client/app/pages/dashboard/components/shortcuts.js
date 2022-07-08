@@ -47,19 +47,20 @@ const summaryBtn = () => {
 const containerStyle = `
     display: flex;
     justify-content: space-around;
-    width: 90%;
-    margin-top: 5%;
+    width: 100%;
+    max-width: 640px;
+    margin: 5% 0;
 `;
 
 const btnStyle = `
     background: black;
     color: white;
-    font-size: 4vw;
+    font-size: var(--sm-font-size);
     border-radius: 25%;
     width: 25vw;
+    max-width: 180px;
     height: 25vw;
-    max-width: 240px;
-    max-height: 240px;
+    max-height: 180px;
     padding: 2%;
 `;
 
@@ -69,6 +70,7 @@ const imgStyle = `
 
 const textStyle = `
   margin: 0;
+  font-size: var(--sm-font-size);
 `;
 
 export { Shortcuts };

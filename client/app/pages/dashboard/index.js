@@ -23,7 +23,9 @@ const Dashboard = async () => {
   const cal = Bubble("Calendar", Calendar([...bills, ...payments]));
   const shortcuts = Shortcuts();
   const nextDue = NextDue(bills);
-  APP.append(heading, cal, shortcuts, nextDue);
+  const west = $("<div></div>").append(cal, shortcuts);
+
+  APP.append(heading, west, nextDue);
 };
 
 export { Dashboard };

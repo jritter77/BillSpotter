@@ -24,7 +24,7 @@ const tooltipStyle = {
   border: "2px solid black",
   padding: "2vw",
   "z-index": 1,
-  "font-size": "4vw",
+  "font-size": "var(--sm-font-size)",
 };
 
 export { Tooltip };

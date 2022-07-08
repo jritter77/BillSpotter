@@ -18,25 +18,27 @@ const Bubble = (heading, content) => {
 };
 
 const containerStyle = `
-    width: 80%;
+    width: 80vw;
+    max-width: 512px;
     background: black;
-    padding: 5%;
+    padding: var(--md-font-size);
     padding-top: 0;
     display: flex;
     flex-direction: column;
-    border-radius: 10%;
+    border-radius: var(--md-font-size);
+    margin-bottom: 5%;
 `;
 
 const headingStyle = `
     color: white;
-    font-size: 5vw;
+    font-size: var(--md-font-size);
     margin: 5%;
 `;
 
 const contentStyle = `
     background: white;
-    font-size: 5vw;
-    border-radius: 0 0 10% 10%;
+    font-size: var(--md-font-size);
+    border-radius: 0 0 var(--md-font-size) var(--md-font-size);
 `;
 
 export { Bubble };

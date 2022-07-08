@@ -176,31 +176,31 @@ const groupStyle = {
 
 const labelStyle = {
   "font-weight": "bold",
-  "font-size": "5vw",
+  "font-size": "var(--md-font-size)",
   "margin-bottom": "5%",
 };
 
 const inputStyle = {
   padding: "5%",
   "border-radius": "25px",
-  "font-size": "5vw",
+  "font-size": "var(--md-font-size)",
   width: "80%",
 };
 
 const selectStyle = {
   padding: "5%",
   "border-radius": "25px",
-  "font-size": "5vw",
+  "font-size": "var(--md-font-size)",
   width: "80%",
 };
 
 const radioStyle = {
-  width: "4vw",
-  height: "4vw",
+  width: "var(--sm-font-size)",
+  height: "var(--sm-font-size)",
 };
 
 const radioLabelStyle = {
-  "font-size": "4vw",
+  "font-size": "var(--sm-font-size)",
 };
 
 const radioGroupStyle = {
@@ -209,12 +209,12 @@ const radioGroupStyle = {
 };
 
 const dateStyle = {
-  "font-size": "4vw",
+  "font-size": "var(--sm-font-size)",
 };
 
 const feedbackStyle = {
   color: "red",
-  "font-size": "4vw",
+  "font-size": "var(--sm-font-size)",
 };
 
 const submitStyle = {
@@ -222,7 +222,7 @@ const submitStyle = {
   color: "white",
   "border-radius": "25px",
   padding: "5% 10%",
-  "font-size": "7vw",
+  "font-size": "var(--xl-font-size)",
 };
 
 export {

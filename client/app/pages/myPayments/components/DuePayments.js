@@ -58,7 +58,7 @@ const dueBillStyle = {
   "justify-content": "space-between",
   "align-items": "center",
   padding: "5%",
-  "font-size": "5vw",
+  "font-size": "var(--md-font-size)",
 };
 
 const titleStyle = {
@@ -72,7 +72,7 @@ const paidBtnStyle = {
   padding: 0,
   margin: 0,
   width: "20%",
-  "font-size": "10vw",
+  "font-size": "var(--mg-font-size)",
   "font-weight": "bold",
   background: "black",
   color: "white",

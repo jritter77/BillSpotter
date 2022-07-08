@@ -26,7 +26,11 @@ const Totals = (bills, payments) => {
 
   for (let cat in catTotals) {
     container.append(
-      catRow(cat, catTotals[cat].total_due, catTotals[cat].total_paid)
+      catRow(
+        cat,
+        "$" + catTotals[cat].total_due,
+        "$" + catTotals[cat].total_paid
+      )
     );
     totalDue += catTotals[cat].total_due;
     toatalPaid += catTotals[cat].total_paid;
@@ -34,10 +38,10 @@ const Totals = (bills, payments) => {
   container.append($("<hr>"));
 
   container.append(
-    catRow("TOTAL", totalDue, toatalPaid).css("font-weight", "bold")
+    catRow("TOTAL", "$" + totalDue, "$" + toatalPaid).css("font-weight", "bold")
   );
 
-  return Bubble("Category Totals", container).css("margin-top", "5%");
+  return Bubble("Category Totals", container);
 };
 
 const catRow = (catName, due, paid) => {
@@ -49,13 +53,14 @@ const catRow = (catName, due, paid) => {
 };
 
 const catCol = (text) => {
-  return $("<p></p>").text(text).css(catColStyle);
+  return $("<p></p>").html(text).css(catColStyle);
 };
 
 const catRowStyle = {};
 const catColStyle = {
   flex: 1,
   "text-align": "center",
+  "font-size": "var(--md-font-size)",
 };
 
 export { Totals };

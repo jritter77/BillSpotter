@@ -27,7 +27,7 @@ const Dropdowns = (bills) => {
       Bubble(
         "My Bills",
         PlaceHolder(
-          `You do not currently have any bills to display. Create a new bill using the "New Bill" button above.`
+          `You do not currently have any bills to display.<br><br>Create a new bill using the "New Bill" button above.`
         )
       )
     );
@@ -78,7 +78,7 @@ const dropdown = ({
 
   let amtDueGroup = $("<div></div>").css(groupStyle);
   let amtDueHeader = $("<p>Amount Due</p>").css(headerStyle);
-  let amtDue = $("<p></p>").text(bill_amt_due);
+  let amtDue = $("<p class='dollar'></p>").text(bill_amt_due);
 
   let statusGroup = $("<div></div>").css(groupStyle);
   let statusHeader = $("<p>Status</p>").css(headerStyle);
@@ -154,11 +154,11 @@ const dropdownContainerStyle = {
 
 const dropdownStyle = {
   border: "4px solid black",
-  "border-radius": "5vw",
+  "border-radius": "var(--md-font-size)",
   overflow: "hidden",
-
   background: "black",
   width: "80vw",
+  "max-width": "720px",
   margin: "2%",
 };
 
@@ -167,21 +167,21 @@ const dueBillHeadingStyle = {
   color: "white",
   margin: 0,
   padding: "5%",
-  "font-size": "8vw",
+  "font-size": "var(--xl-font-size)",
 };
 
 const collapsibleStyle = {
   background: "white",
-  "font-size": "5vw",
+  "font-size": "var(--md-font-size)",
 };
 
 const btnStyle = {
-  "font-size": "5vw",
+  "font-size": "var(--md-font-size)",
   padding: "5%",
   margin: "5%",
   background: "black",
   color: "white",
-  "border-radius": "10%",
+  "border-radius": "var(--md-font-size)",
 };
 
 const groupStyle = {
@@ -199,7 +199,7 @@ const headerStyle = {
 };
 
 const symbolStyle = {
-  "font-size": "8vw",
+  "font-size": "var(--xxl-font-size)",
   color: "white",
   margin: 0,
   padding: "5%",

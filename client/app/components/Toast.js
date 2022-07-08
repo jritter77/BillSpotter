@@ -20,7 +20,7 @@ const toastStyle = `
     background: black;
     color: white;
     margin: 0;
-    font-size: 5vw;
+    font-size: var(--md-font-size);
     width: 100vw;
     position: sticky;
     top: 0;

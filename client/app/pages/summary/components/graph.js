@@ -22,8 +22,8 @@ const Graph = (bills, payments) => {
 
   const catTotals = Bills.getMonthTotals([...bills, ...payments]);
 
-  const min = $("<p></p>").text(0).css({ margin: 0 });
-  const max = $("<p></p>")
+  const min = $("<p class='dollar'></p>").text(0).css({ margin: 0 });
+  const max = $("<p class='dollar'></p>")
     .text(Math.ceil((Bills.getCatMax(catTotals) * 1.1) / 100) * 100)
     .css({ margin: 0 });
 
@@ -91,7 +91,7 @@ const graphStyle = {
   padding: "0 5%",
 };
 const yAxisStyle = {
-  "font-size": "4vw",
+  "font-size": "var(--sm-font-size)",
   "text-align": "center",
   display: "flex",
   "flex-direction": "column",
@@ -135,7 +135,7 @@ const northStyle = {
   height: "100%",
 };
 const labelStyle = {
-  "font-size": "4vw",
+  "font-size": "var(--sm-font-size)",
   overflow: "hidden",
   "white-space": "nowrap",
   "text-overflow": "ellipsis",

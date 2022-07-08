@@ -144,6 +144,7 @@ const dayStyle = `
     margin: 0;
     padding: 0;
     position: relative;
+    font-size: var(--md-font-size);
 `;
 
 export { Calendar };

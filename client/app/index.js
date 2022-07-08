@@ -23,6 +23,7 @@ function getPageFromURL() {
 function loadContent() {
   let fragmentId = getPageFromURL();
   pages[fragmentId]();
+  window.scrollTo(0, 0);
 }
 
 // initial call to load content
