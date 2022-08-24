@@ -1,5 +1,5 @@
-import { Bubble } from "../app/components/Bubble";
-import { SignupForm } from "./components/signupForm";
+import { Bubble } from "../app/components/Bubble.js";
+import { SignupForm } from "./components/signupForm.js";
 
 $(window).ready(() => {
   // set dropdown menu behavior
