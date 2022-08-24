@@ -49,12 +49,12 @@ const SignupForm = () => {
 };
 
 // Submission handler
-const submissionHandler = (userField, passField, confirmPassField) => {
+const submissionHandler = async (userField, passField, confirmPassField) => {
   if (validateForm(userField, passField, confirmPassField)) {
     let username = userField.input.val();
     let password = passField.input.val();
 
-    let result = User.newUser(username, password);
+    let result = await User.newUser(username, password);
 
     if (result === "SUCCESS") {
       location = location.toString().replace("signup", "app");

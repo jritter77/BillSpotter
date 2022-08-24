@@ -3,12 +3,13 @@
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 #app > h1 {
     width: 80%;
     font-size: var(--xl-font-size);
+    text-align: center;
 }
 
 #background {
@@ -40,6 +41,10 @@ body {
 
 .dollar::before {
     content: '$';
+}
+
+.dollar::after {
+    content: '.00'
 }
 
 html {

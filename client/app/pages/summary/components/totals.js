@@ -41,7 +41,7 @@ const Totals = (bills, payments) => {
     catRow("TOTAL", "$" + totalDue, "$" + toatalPaid).css("font-weight", "bold")
   );
 
-  return Bubble("Category Totals", container);
+  return Bubble("Category Totals", container).css({ margin: "0px 2%" });
 };
 
 const catRow = (catName, due, paid) => {

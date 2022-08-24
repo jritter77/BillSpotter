@@ -6,7 +6,7 @@ import { Totals } from "./components/totals.js";
 
 const Summary = async () => {
   const APP = $("#app");
-  APP.html(`<h1>Summary</h1>`);
+  APP.html(`<h1>Month Summary</h1>`);
 
   if (!sessionStorage.getItem("bills")) {
     await Bills.getBills();

@@ -58,7 +58,7 @@ const paidBill = (bill) => {
 };
 
 const bubbleStyle = {
-  "margin-top": "5%",
+  margin: "2%",
 };
 
 const paidBillStyle = {

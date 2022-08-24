@@ -22,8 +22,10 @@ const Dashboard = async () => {
   const heading = $(`<h1>Dashboard</h1>`);
   const cal = Bubble("Calendar", Calendar([...bills, ...payments]));
   const shortcuts = Shortcuts();
-  const nextDue = NextDue(bills);
-  const west = $("<div></div>").append(cal, shortcuts);
+  const nextDue = NextDue(bills).css({ margin: "0px 2%" });
+  const west = $("<div></div>")
+    .append(cal, shortcuts)
+    .css({ margin: "0px 2%" });
 
   APP.append(heading, west, nextDue);
 };

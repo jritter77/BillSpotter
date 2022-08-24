@@ -80,6 +80,7 @@ const containerStyle = {
   "flex-direction": "column",
   "justify-content": "space-between",
   "padding-top": "5%",
+  margin: "0px 2%",
 };
 const graphStyle = {
   width: "100%",
