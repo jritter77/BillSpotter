@@ -35,6 +35,9 @@ const loginForm = () => {
 
       if (result !== "FAILURE") {
         location.replace(location.toString().replace("login", "app"));
+      } else {
+        passField.input.addClass("invalid");
+        passField.feedback.text("Invalid Credentials. Please try again.");
       }
     }
   });
