@@ -15,5 +15,7 @@ $(window).ready(() => {
     .find("a")
     .click(() => $(".navDropdownMenu").removeClass("active"));
 
-  $("#app").append(Bubble("Register New User", SignupForm()));
+  $("#app").append(Bubble("Register New User", SignupForm()).css(bubbleStyle));
 });
+
+const bubbleStyle = { "margin-top": "10vh" };

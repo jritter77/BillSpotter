@@ -34,7 +34,7 @@ const SignupForm = () => {
   } = createFields(fields);
 
   // Set submission handler
-  const submitBtn = FormSubmit("Confirm Payment", () => {
+  const submitBtn = FormSubmit("Register", () => {
     submissionHandler(userField, passField, confirmPassField);
   });
 
